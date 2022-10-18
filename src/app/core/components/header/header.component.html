@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openedSidenav=!openedSidenav">
+      <mat-icon color="accent">menu</mat-icon>
+    </button>
+    <span>Header</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon color="accent">favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-sidenav [opened]="openedSidenav"></app-sidenav>

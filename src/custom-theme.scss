@@ -8,15 +8,112 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
+$primary: (
+  50 : #e1e0f8,
+    100 : #b3b3ec,
+    200 : #8180e0,
+    300 : #4f4dd4,
+    400 : #2926ca,
+    500 : #0300c1,
+    600 : #0300bb,
+    700 : #0200b3,
+    800 : #0200ab,
+    900 : #01009e,
+    A100 : #c9c9ff,
+    A200 : #9696ff,
+    A400 : #6363ff,
+    A700 : #4949ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
 
+$accent : (
+  50 : #e3fee0,
+  100 : #bafcb3,
+  200 : #8cfa80,
+  300 : #5ef74d,
+  400 : #3cf626,
+  500 : #19f400,
+  600 : #16f300,
+  700 : #12f100,
+  800 : #0eef00,
+  900 : #08ec00,
+  A100 : #ffffff,
+  A200 : #e0ffe0,
+  A400 : #adffad,
+  A700 : #94ff93,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$danger : (
+  50 : #fee3e0,
+  100 : #fcb9b3,
+  200 : #fa8a80,
+  300 : #f75b4d,
+  400 : #f63826,
+  500 : #f41500,
+  600 : #f31200,
+  700 : #f10f00,
+  800 : #ef0c00,
+  900 : #ec0600,
+  A100 : #ffffff,
+  A200 : #ffe0e0,
+  A400 : #ffadad,
+  A700 : #ff9493,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$DS2022-primary: mat.define-palette(mat.$indigo-palette);
-$DS2022-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$DS2022-primary: mat.define-palette($primary);
+$DS2022-accent: mat.define-palette($accent);
 
 // The warn palette is optional (defaults to red).
-$DS2022-warn: mat.define-palette(mat.$red-palette);
+$DS2022-warn: mat.define-palette($danger);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
