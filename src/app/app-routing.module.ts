@@ -9,7 +9,7 @@ const routes: Routes = [
       import('./modules/main/main.module').then((m)=> m.MainModule)
   }
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
