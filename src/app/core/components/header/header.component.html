@@ -1,14 +1,18 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openedSidenav=!openedSidenav">
-      <mat-icon color="accent">menu</mat-icon>
-    </button>
-    <span>Header</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon color="accent">favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon color="warn">delete</mat-icon>
-    </button>
+<mat-toolbar class="toolbar">
+    <div>
+      <img src="../../../../assets/img/DS_Travel.svg" alt="">
+    </div>
+    <span class="spacer"></span>
+    <div class="row mx-5">
+      <div class="col-6">
+        <button mat-stroked-button color="primary" class="mr-3 button" aria-label="Example icon-button with heart icon">
+          INICAR SESIÓN
+        </button>
+      </div>
+      <div class="col-6 ml-2">
+        <button mat-raised-button color="primary" class="ml-5 button" aria-label="Example icon-button with share icon">
+        CREA TU CUENTA
+      </button>
+      </div>
+    </div>
   </mat-toolbar>
-  <app-sidenav [opened]="openedSidenav"></app-sidenav>

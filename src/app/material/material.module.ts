@@ -5,6 +5,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -13,7 +17,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule
   ],
   exports:[
     CommonModule,
@@ -21,7 +28,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule
   ]
 })
 export class MaterialModule { }
