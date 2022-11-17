@@ -5,12 +5,21 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-h1{
+h4{
     font-size: 100rem;
     font-weight: bold;
 }
 
+
+label{
+    font-size: 1.5rem;
+}
+
+h1{
+    font-size: 30px !important;
+    font-weight: 500 !important;
+}
+
 h4{
-    font-size: 100rem;
-    font-weight: bold;
+    font-size: 2rem !important;
 }

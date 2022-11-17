@@ -1,7 +1,94 @@
 <ng-container>
-    <div class="container">
-        <div>
-            
+    <div class="row px-5">
+        <button mat-icon-button routerLink="/">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+    <div class="container justify-content-center">
+        <div class="text-center mt-5">
+            <h1>SOBRE VOS...</h1>
         </div>
+        <div class="row d-flex">
+            <div class="col-6 mt-4">
+                <label>Datos</label>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>Nombre </mat-label>
+                    <input matInput placeholder="Ingrese aqui su nombre">
+                </mat-form-field>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>Apellido </mat-label>
+                    <input matInput placeholder="Ingrese aqui su apellido">
+                </mat-form-field>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>Fecha de Nacimiento </mat-label>
+                    <input matInput placeholder="Ingrese aqui su fecha de nacimiento">
+                </mat-form-field>
+                <div class="row">
+                    <div class="col-4 ">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Tipo de documento</mat-label>
+                            <input matInput type="text" placeholder="Seleccione tipo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-8">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Número de documento</mat-label>
+                            <input matInput type="text" placeholder="Ingrese aqui su número de dni">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>Teléfono </mat-label>
+                    <input matInput placeholder="Ingrese aqui su número de teléfono">
+                </mat-form-field>
+            </div>
+            <div class="col-6 mt-4">
+                <label for="">Domicilio</label>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>País </mat-label>
+                    <input matInput placeholder="Ingrese aqui su pais">
+                </mat-form-field>
+                <mat-form-field class="mt-4 field">
+                    <mat-label>Región/Provincia/Estado </mat-label>
+                    <input matInput placeholder="Ingrese aqui su región">
+                </mat-form-field>
+                <div class="row">
+                    <div class="col-7">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Calle </mat-label>
+                            <input matInput placeholder="Ingrese aqui calle">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-5">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Altura </mat-label>
+                            <input matInput placeholder="XXX">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Ciudad </mat-label>
+                            <input matInput placeholder="Ingrese aqui calle">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-5">
+                        <mat-form-field class="mt-4 field">
+                            <mat-label>Código postal </mat-label>
+                            <input matInput placeholder="XXX">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button mat-raised-button color="primary" class="mt-4" style="width: 80%;" >
+                        CONTINUAR
+                    </button>
+                </div>
+                
+                
+            </div>
+        </div>
+        
     </div>
 </ng-container>
