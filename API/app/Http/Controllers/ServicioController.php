@@ -74,7 +74,39 @@ class ServicioController extends Controller
     }
 
     public function modificarEstadoReserva(){
+        $validator = Validator::make($req->all(), [
+            'id_reserva' => 'required',
+            'estado' => 'required',
+        ]);
 
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(),400);
+        }
+
+
+        try {
+            $reserva = Reserva::where('id_reserva',$req->id_reserva)->firstOrFail();
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" =>"No existe la reserva",
+                "error" => $th->getMessage()
+            ],406);
+        }
+
+        $reserva->estado = $req->estado;
+
+        try {
+            $reserva->save();
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    "message" => "Error al crear la reserva",
+                    "error" => $th->getMessage()
+                ], 503
+            );
+        }
+
+        return response()->json("Estado actualizado");
     }
 
     public function modificarReserva(Request $req){
