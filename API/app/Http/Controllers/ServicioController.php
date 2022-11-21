@@ -51,10 +51,6 @@ class ServicioController extends Controller
 
     }
 
-    public function confirmarPago(Request $req){
-
-    }
-
     public function listarReservas($id_usuario){
 
         $validator = Validator::make($req->all(), [
@@ -81,8 +77,43 @@ class ServicioController extends Controller
 
     }
 
-    public function modificarReserva(){
+    public function modificarReserva(Request $req){
+        $validator = Validator::make($req->all(), [
+            'id_reserva' => 'required',
+            'id_pago' => 'required',
+            'estado' => 'required',
+            'id_usuario' => 'required',
+        ]);
 
+        if($validator->fails()){
+                return response()->json($validator->errors()->toJson(),400);
+        }
+
+        try {
+            $reserva = Reserva::where('id_reserva',$req->id_reserva)->firstOrFail();
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" =>"No existe la reserva",
+                "error" => $th->getMessage()
+            ],406);
+        }
+
+        $reserva->id_pago = $req->id_pago;
+        $reserva->estado = $req->estado;
+        $reserva->id_usuario = $req->id_usuario;
+
+        try {
+            $reserva->save();
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    "message" => "Error al crear la reserva",
+                    "error" => $th->getMessage()
+                ], 503
+            );
+        }
+
+        return response()->json("Reserva modificada");
     }
 
     public function nuevaReserva(Request $req){
