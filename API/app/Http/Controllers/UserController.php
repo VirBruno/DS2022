@@ -51,8 +51,10 @@ class UserController extends Controller
 
         Log::info($request);
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'rol' => 'required|string|max:255',
+            'correo' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
@@ -61,14 +63,21 @@ class UserController extends Controller
         }
 
         $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
+            'name' => $request->nombre,
+            'apellido' => $request->apellido,
+            'rol' => $request->rol,
+            'correo' => $request->correo,
             'password' => Hash::make($request->get('password')),
+            'dni' =>$request->dni,
+            'telefono' => $request->telefono,
+            'fechaNacimiento' => $request->fechaNacimiento,
+            'tipoDocumento' =>$request->tipoDocumento,
+            'id_direccion' => $request->id_direccion,
         ]);
 
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user','token'),201);
     }
-    
+
 }
