@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Servicio;
 use App\Models\Pago;
 use App\Models\Reserva;
+use Illuminate\Support\Facades\Validator;
 
 class ServicioController extends Controller
 {
     public function agregarServicio(Request $req){
-
 
         $validator = Validator::make($req->all(), [
             'id_reserva' => 'required|integer',
@@ -47,7 +47,7 @@ class ServicioController extends Controller
         return response()->json("Servicio agregado con exito");
     }
 
-    public function buscarServicio(){
+    public function buscarServicio(Request $req){
 
     }
 

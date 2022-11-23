@@ -20,20 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
-
-
-
-
-
-
 Route::middleware(['jwt.verify'])->group(function () {
     Route::middleware(['rol.verify'])->group(function () {
         Route::post('reserva/updateEstado',[ServicioController::class,'modificarEstadoReserva']);
         Route::post('servicio/new',[ServicioController::class,'agregarServicio']);
         Route::post('reserva/new',[ServicioController::class,'nuevaReserva']);
         Route::post('reserva/update',[ServicioController::class,'modificarReserva']);
-        Route::get('reserva/get',[ServicioController::class,'listarReservas']);
+        Route::get('reserva/get/{id_usuario}',[ServicioController::class,'listarReservas']);
         Route::post('pago/new',[ServicioController::class,'nuevoPago']);
     });
     Route::post('user',[UserController::class, 'getAuthenticatedUser']);
