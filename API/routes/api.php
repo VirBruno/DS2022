@@ -30,6 +30,8 @@ Route::middleware(['jwt.verify'])->group(function () {
         Route::post('pago/new',[ServicioController::class,'nuevoPago']);
     });
     Route::post('user',[UserController::class, 'getAuthenticatedUser']);
+
+    Route::post('logout', [UserController::class, 'logout']);
 });
 
 Route::post('register',[UserController::class, 'register']);

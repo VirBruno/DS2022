@@ -29,6 +29,32 @@ class UserController extends Controller
       return response()->json(compact('token'));
     }
 
+    public function logout(Request $request)
+    {
+        //Validamos que se nos envie el token
+        $validator = Validator::make($request->only('token'), [
+            'token' => 'required'
+        ]);
+        //Si falla la validación
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()], 400);
+        }
+        try {
+            //Si el token es valido eliminamos el token desconectando al usuario.
+            JWTAuth::invalidate($request->token);
+            return response()->json([
+                'success' => true,
+                'message' => 'User disconnected'
+            ]);
+        } catch (JWTException $exception) {
+            //Error chungo
+            return response()->json([
+                'success' => false,
+                'message' => 'Error'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public function getAuthenticatedUser()
     {
         try {
