@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\VueloController;
+use App\Http\Controllers\ReservaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -43,7 +45,7 @@ Route::middleware(['jwt.verify'])->group(function () {
      Route::post('vuelo/new',[VueloController::class,'create']);
      Route::post('vuelo/update',[VueloController::class,'update']);
      Route::delete('vuelo/delete/{id_vuelo}',[VueloController::class,'delete']);
-     Route::get('vuelo/getById/{id_vuelo}',[VueloController::class,'get']);
+    
      Route::get('vuelo/getAll',[VueloController::class,'getAll']);
 
       //CRUD AVION Y ASIENTOS
@@ -68,4 +70,6 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('logout', [UserController::class, 'logout']);
 });
 
-
+Route::post('vuelosPorFecha',[VueloController::class,'vuelosPorFecha']);
+Route::get('vuelo/getById/{id_vuelo}',[VueloController::class,'get']);
+Route::get('misReservas/{id_usuario}',[ReservaController::class,'misReservas']);

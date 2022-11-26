@@ -49,6 +49,14 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    public function misReservas(){
+        return $this->hasMany(
+            Reserva::class,
+            'id_usuario',
+            'id_usuario'
+        );
+    }
+
     public function getJWTIdentifier()
     {
     	return $this->getKey();

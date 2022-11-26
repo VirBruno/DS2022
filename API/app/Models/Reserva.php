@@ -10,4 +10,6 @@ class Reserva extends Model
     use HasFactory;
     protected $primaryKey = 'id_reserva';
     protected $table = 'reserva';
+
+    
 }

@@ -6,6 +6,33 @@ use Illuminate\Http\Request;
 
 class VueloController extends Controller
 {
+    public function vuelosPorFecha(Request $req){
+        try {
+            $vuelo['ida'] = Vuelo::with('vueloConAsientos')
+            ->where([
+                ['aeropuertoOrigen',$req->origen],
+                ['aeropuertoDestino',$req->destino]
+            ])
+            ->whereDate('fechaYHoraPartida',$req->fechaPartida)
+            ->get();
+
+            $vuelo['vuelta'] = Vuelo::with('vueloConAsientos')
+            ->where([
+                ['aeropuertoOrigen',$req->destino],
+                ['aeropuertoDestino',$req->origen],
+            ])
+            ->whereDate('fechaYHoraPartida',$req->fechaVuelta)
+            ->get();
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" => "Error al consultar los vuelos por fecha",
+                "error" => $th->getMessage()
+            ],503);
+        }
+
+        return response()->json($vuelo);
+    }
+
     public function create(Request $req){
         $vuelo = new Vuelo();
 
@@ -57,7 +84,9 @@ class VueloController extends Controller
 
     public function get($id_vuelo){
         try {
-            $vuelo = Vuelo::where('id_vuelo',$id_vuelo)->firstOrFail();
+            $vuelo = Vuelo::with('vueloConAsientos')
+            ->where('id_vuelo',$id_vuelo)
+            ->firstOrFail();
         } catch (\Throwable $th) {
             return response()->json([
                 "message" => "Error al consultar el vuelo",

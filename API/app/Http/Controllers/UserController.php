@@ -29,6 +29,8 @@ class UserController extends Controller
       return response()->json(compact('token'));
     }
 
+    
+
     public function logout(Request $request)
     {
         //Validamos que se nos envie el token
