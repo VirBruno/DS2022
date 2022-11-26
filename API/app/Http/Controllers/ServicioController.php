@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Servicio;
 use App\Models\Pago;
 use App\Models\Reserva;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class ServicioController extends Controller
@@ -61,16 +62,18 @@ class ServicioController extends Controller
                 return response()->json($validator->errors()->toJson(),400);
         }
 
-        try {
-            $reservas = Reserva::where('id_usuario',$id_usuario)->get();
-        } catch (\Throwable $th) {
-            return response()->json([
-                "message" => "Error al consultar las reservas del usuario seleccionado",
-                "error" => $th->getMessage(),
-            ]);
-        }
-
-        return response()->json($reservas);
+       
+            try {
+                $misReservas = User::with('misReservas')->where('id_usuario',$id_usuario)->first();
+            } catch (\Throwable $th) {
+                return response()->json([
+                    "message" => "Error al consultar las reservas",
+                    "error" => $th->getMessage()
+                ],503);
+            }
+    
+            return response()->json($misReservas);
+        
     }
 
     public function modificarEstadoReserva(){
