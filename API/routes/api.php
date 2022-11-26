@@ -7,6 +7,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\VueloController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\AeropuertoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,6 +43,14 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::get('oferta/getById/{id_oferta}',[OfertaController::class,'get']);
     Route::get('oferta/getAll',[OfertaController::class,'getAll']);
 
+    //CRUD AEROPUERTO
+
+    Route::post('aeropuerto/new',[AeropuertoController::class,'create']);
+    Route::post('aeropuerto/update',[AeropuertoController::class,'update']);
+    Route::delete('aeropuerto/delete/{id_aeropuerto}',[AeropuertoController::class,'delete']);
+    Route::get('aeropuerto/getById/{id_aeropuerto}',[AeropuertoController::class,'get']);
+    Route::get('aeropuerto/getAll',[AeropuertoController::class,'getAll']);
+
      //CRUD VUELO
 
      Route::post('vuelo/new',[VueloController::class,'create']);
@@ -64,7 +73,7 @@ Route::middleware(['jwt.verify'])->group(function () {
       Route::delete('asiento/delete/{id_asiento}',[AvionController::class,'deleteAsiento']);
       Route::get('asiento/getById/{id_asiento}',[AvionController::class,'getAsiento']);
       Route::get('asiento/asientosLibres/{id_avion}',[AvionController::class,'asientosLibres']);
-      Route::get('aviasientoon/getAll',[AvionController::class,'getAllAsientos']);
+      Route::get('asiento/getAll',[AvionController::class,'getAllAsientos']);
 
 
     Route::post('user',[UserController::class, 'getAuthenticatedUser']);

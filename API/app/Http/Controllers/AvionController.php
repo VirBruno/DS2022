@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Avion;
 use App\Models\Asiento;
+use DB;
 use Illuminate\Http\Request;
 
 class AvionController extends Controller
