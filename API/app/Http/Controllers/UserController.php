@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function authenticate(Request $request)
     {
-      $credentials = $request->only('email', 'password');
+      $credentials = $request->only('correo', 'password');
 
       try {
           if (! $token = JWTAuth::attempt($credentials)) {
@@ -75,7 +75,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
 
-        Log::info($request);
+      //  Log::info($request);
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -89,7 +89,7 @@ class UserController extends Controller
         }
 
         $user = User::create([
-            'name' => $request->nombre,
+            'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'rol' => $request->rol,
             'correo' => $request->correo,

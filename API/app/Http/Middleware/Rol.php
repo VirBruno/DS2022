@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +25,7 @@ class Rol
             ]);
         }
 
-        if ($user->rol !== 'administrador'){
+        if ($user->rol !== 'admin'){
             return response()->json([
                 "message" => "No posee permisos para acceder a esta ruta"
             ],401);
