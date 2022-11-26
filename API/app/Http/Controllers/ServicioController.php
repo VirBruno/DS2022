@@ -61,8 +61,7 @@ class ServicioController extends Controller
         if($validator->fails()){
                 return response()->json($validator->errors()->toJson(),400);
         }
-
-       
+        
             try {
                 $misReservas = User::with('misReservas')->where('id_usuario',$id_usuario)->first();
             } catch (\Throwable $th) {

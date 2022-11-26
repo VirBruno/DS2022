@@ -28,9 +28,11 @@ Route::middleware(['jwt.verify'])->group(function () {
         Route::post('servicio/new',[ServicioController::class,'agregarServicio']);
         Route::post('reserva/new',[ServicioController::class,'nuevaReserva']);
         Route::post('reserva/update',[ServicioController::class,'modificarReserva']);
-        Route::get('reserva/get/{id_usuario}',[ServicioController::class,'listarReservas']);
+      
         Route::post('pago/new',[ServicioController::class,'nuevoPago']);
     });
+
+    Route::get('reserva/get/{id_usuario}',[ServicioController::class,'listarReservas']);
 
     //CRUD OFERTA
 
@@ -45,7 +47,7 @@ Route::middleware(['jwt.verify'])->group(function () {
      Route::post('vuelo/new',[VueloController::class,'create']);
      Route::post('vuelo/update',[VueloController::class,'update']);
      Route::delete('vuelo/delete/{id_vuelo}',[VueloController::class,'delete']);
-    
+     Route::post('vuelosPorFecha',[VueloController::class,'vuelosPorFecha']);
      Route::get('vuelo/getAll',[VueloController::class,'getAll']);
 
       //CRUD AVION Y ASIENTOS
@@ -70,6 +72,6 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('logout', [UserController::class, 'logout']);
 });
 
-Route::post('vuelosPorFecha',[VueloController::class,'vuelosPorFecha']);
-Route::get('vuelo/getById/{id_vuelo}',[VueloController::class,'get']);
-Route::get('misReservas/{id_usuario}',[ReservaController::class,'misReservas']);
+
+
+
