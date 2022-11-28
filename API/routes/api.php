@@ -30,6 +30,7 @@ Route::post('login',[UserController::class, 'authenticate']);
  Route::post('reserva/update',[ReservaController::class,'modificarReserva']);
  Route::post('pago/new',[ReservaController::class,'nuevoPago']);
  Route::get('reserva/get/{id_usuario}',[ReservaController::class,'listarReservas']);
+ Route::get('buscarServicio/{id_servicio}',[ReservaController::class,'buscarServicio']);
 
  //----------------------------------------------------------------------------------------------------
 

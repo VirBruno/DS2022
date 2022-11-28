@@ -48,8 +48,17 @@ class ReservaController extends Controller
         return response()->json("Servicio agregado con exito");
     }
 
-    public function buscarServicio(Request $req){
+    public function buscarServicio($id_servicio){
+        try {
+            $servicio = Servicio::with('vuelo','reserva')->where('id_servicio',$id_servicio)->firstOrFail();
+        } catch (\Throwable $th) {
+            return response()->json([
+                "message" => "error al buscar el servicio",
+                "error" => $th->getMessage()
+            ],406);
+        }
 
+        return response()->json($servicio);
     }
 
     public function listarReservas($id_usuario){
