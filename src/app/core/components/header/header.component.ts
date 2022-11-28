@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   openSidenav!:boolean
   events:string[]=[]
   openedSidenav=false;
+  isLogged= true;
   
   @ViewChild('sidenav')sidenav!: SidenavComponent;
   constructor() { }

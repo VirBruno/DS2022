@@ -7,6 +7,11 @@ const routes: Routes = [
     path:'auth',
     loadChildren: ()=>
       import('./modules/main/main.module').then((m)=> m.MainModule)
+  },
+  { 
+    path: 'vuelos', 
+    loadChildren: () => 
+    import('./modules/vuelos/vuelos.module').then(m => m.VuelosModule) 
   }
 ];
  

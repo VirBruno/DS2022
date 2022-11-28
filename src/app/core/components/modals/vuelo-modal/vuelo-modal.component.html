@@ -1,0 +1,54 @@
+<div class="container d-flex justify-content-center">
+    <div class="row d-flex justify-content-center p-5">
+        <div class="d-flex justify-content-center">
+            <h1>AGREGAR</h1>
+        </div>
+        <div class="col-6 mt-4">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Aeropuerto origen</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6 mt-4">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Aeropuerto destino</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6  mt-3">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Aeropuerto origen</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6 mt-3">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Aeropuerto destino</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6 mt-3">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Fecha de partida</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="col-6 mt-3">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Cantidad de asientos</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6 mt-3">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Cantidad de asientos</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-6 mt-3 d-flex justify-content-center">
+            <button mat-raised-button color="primary" class="button">Crear vuelo</button>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,10 @@ import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/le
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -20,7 +24,10 @@ import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-car
     MatCheckboxModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule
   ],
   exports:[
     CommonModule,
@@ -31,7 +38,10 @@ import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-car
     MatCheckboxModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

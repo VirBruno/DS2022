@@ -1,18 +1,19 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar class="toolbar d-flex">
     <div>
       <img src="../../../../assets/img/DS_Travel.svg" alt="">
     </div>
-    <span class="spacer"></span>
-    <div class="row mx-5">
+    <div class="row mx-5 contenido">
       <div class="col-6">
-        <button mat-stroked-button color="primary" class="mr-3 button" routerLink="/auth/login" aria-label="Example icon-button with heart icon">
-          INICAR SESIÓN
-        </button>
+        <div *ngIf="isLogged" class="d-flex justify-content-around">
+          <button mat-stroked-button color="primary" class="button" >PAQUETES</button>
+          <button mat-stroked-button color="primary" routerLink="/vuelos">VUELOS</button>  
+          <button mat-stroked-button color="primary">VEHÍCULOS</button>
+          <button mat-stroked-button color="primary">ALOJAMIENTO</button>
+        </div>
       </div>
-      <div class="col-6 ml-2">
-        <button mat-raised-button color="primary" class="ml-5 button" routerLink="/auth/registro" aria-label="Example icon-button with share icon">
-        CREA TU CUENTA
-      </button>
+      <div class="col-6 d-flex justify-content-end">
+          <button mat-stroked-button color="primary" class="mx-3 button" routerLink="/auth/login">INICAR SESIÓN</button>
+          <button mat-raised-button color="primary" class="mx-3 button" routerLink="/auth/registro">CREA TU CUENTA</button>
       </div>
     </div>
   </mat-toolbar>
