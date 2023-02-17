@@ -1,0 +1,15 @@
+mat-card{
+    border-radius: 20px;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix  {
+    display: flex;
+    align-content: baseline;
+    align-items: baseline;
+}
+
+.datepicker{
+    display: flex;
+    align-items: baseline;
+    width: 60%;
+}

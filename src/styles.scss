@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+h4{
+    font-size: 100rem;
+    font-weight: bold;
+}
+
+
+label{
+    font-size: 1.5rem;
+}
+
+h1{
+    font-size: 30px !important;
+    font-weight: 500 !important;
+}
+
+h4{
+    font-size: 2rem !important;
+}
+
+mat-card{
+    border-radius: 20px;
+}

@@ -1,0 +1,19 @@
+<mat-toolbar class="toolbar d-flex">
+    <div>
+      <img src="../../../../assets/img/DS_Travel.svg" alt="" routerLink="/" class="soloHover">
+    </div>
+    <div class="row mx-5 contenido">
+      <div class="col-6">
+        <div *ngIf="isLogged" class="d-flex justify-content-around">
+          <a class nav-link href="#" class="mouseHover">PAQUETES</a>
+          <a class nav-link class="mouseHover" routerLink="/vuelos">VUELOS</a>
+          <a class nav-link href="#" class="mouseHover">VEHÍCULOS</a>
+          <a class nav-link href="#" class="mouseHover">ALOJAMIENTO</a>
+        </div>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+          <button mat-stroked-button color="primary" class="mx-3 button" routerLink="/auth/login">INICAR SESIÓN</button>
+          <button mat-raised-button color="primary" class="mx-3 button" routerLink="/auth/registro">CREA TU CUENTA</button>
+      </div>
+    </div>
+  </mat-toolbar>

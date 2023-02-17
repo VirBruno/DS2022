@@ -1,0 +1,141 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+$primary: (
+  50 : #ebe0f3,
+  100 : #ceb3e0,
+  200 : #ad80cc,
+  300 : #8c4db8,
+  400 : #7426a8,
+  500 : #5b0099,
+  600 : #530091,
+  700 : #490086,
+  800 : #40007c,
+  900 : #2f006b,
+  A100 : #bd9aff,
+  A200 : #9c67ff,
+  A400 : #7b34ff,
+  A700 : #6b1aff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  )
+);
+
+$accent : (
+  50 : #e0f2f1,
+  100 : #b3e0dd,
+  200 : #80cbc6,
+  300 : #4db6af,
+  400 : #26a69e,
+  500 : #00968d,
+  600 : #008e85,
+  700 : #00837a,
+  800 : #007970,
+  900 : #00685d,
+  A100 : #97fff2,
+  A200 : #64ffec,
+  A400 : #31ffe5,
+  A700 : #18ffe2,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$danger : (
+  50 : #fce9ea,
+  100 : #f7c9cb,
+  200 : #f2a5a9,
+  300 : #ec8187,
+  400 : #e8666d,
+  500 : #e44b53,
+  600 : #e1444c,
+  700 : #dd3b42,
+  800 : #d93339,
+  900 : #d12329,
+  A100 : #ffffff,
+  A200 : #ffd9da,
+  A400 : #ffa6a8,
+  A700 : #ff8c8f,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$DS2022-primary: mat.define-palette($primary);
+$DS2022-accent: mat.define-palette($accent);
+
+// The warn palette is optional (defaults to red).
+$DS2022-warn: mat.define-palette($danger);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$DS2022-theme: mat.define-light-theme((
+  color: (
+    primary: $DS2022-primary,
+    accent: $DS2022-accent,
+    warn: $DS2022-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-legacy-component-themes($DS2022-theme);
+
