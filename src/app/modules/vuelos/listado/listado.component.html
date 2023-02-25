@@ -45,12 +45,16 @@
                 <span class="precio mt-4">$100.000</span>
             </div>
         </div>
-        <div class="col-2  d-flex justify-content-center align-items-center" >
-            <button mat-raised-button color="primary" class="compraButton" *ngIf="type === 'back office'">Comprar</button>
-            <div class="d-flex-flex-column" *ngIf="type === 'front office'">
-                <mat-icon> edit</mat-icon>
-                <mat-icon> delete</mat-icon>
-            </div>
+        <div class="col-2 d-flex justify-content-center align-items-center" *ngIf="type === 'back office'" >
+            <button mat-raised-button color="accent" class="compraButton" >Comprar</button>
+        </div>
+        <div class="col-2 d-flex justify-content-around align-items-center" *ngIf="type === 'front office'">
+            <button mat-fab color="accent">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-fab color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
         </div>
     </div>
 </mat-card>

@@ -10,6 +10,7 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { VueloModalComponent } from './core/components/modals/vuelo-modal/vuelo-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,7 +28,8 @@ import { VueloModalComponent } from './core/components/modals/vuelo-modal/vuelo-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
