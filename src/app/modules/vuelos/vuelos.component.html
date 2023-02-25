@@ -8,7 +8,7 @@
             <h4>Resultado</h4>
             <button mat-fab color="primary" (click)="openVuelosModal()"><mat-icon>add</mat-icon></button>
         </div>
-        <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelos"></app-listado>
+        <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosAll" [vuelo]="vuelo"></app-listado>
     </div>
     
 </div>

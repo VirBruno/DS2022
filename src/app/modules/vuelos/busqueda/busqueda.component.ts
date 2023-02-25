@@ -25,8 +25,8 @@ export class BusquedaComponent implements OnInit{
   });
 
   constructor(
-    private aeropuertosSvc:AeropuertoService,
-    private vuelosSvc:VuelosService
+    private aeropuertosSvc: AeropuertoService,
+    private vuelosSvc: VuelosService
   ){
 
   }

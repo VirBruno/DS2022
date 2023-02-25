@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VueloModalComponent } from 'src/app/core/components/modals/vuelo-modal/vuelo-modal.component';
+import { Vuelo } from 'src/app/interfaces/vuelo.interface';
 import { ModalService } from 'src/app/services/modal.service';
+import { VuelosService } from 'src/app/services/vuelos.service';
 
 @Component({
   selector: 'app-vuelos',
@@ -10,15 +12,25 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class VuelosComponent implements OnInit{
 
-  vuelos= [1,2,3,4,5,6,7]
+  vuelosAll: Vuelo[] = []
+
   constructor(
     private modalService:ModalService,
+    private vueloSvc: VuelosService
   ){
 
   }
 
   ngOnInit(): void {
-    
+    this.vueloSvc.getAllVuelos().subscribe({
+      next: (res)=> {
+        this.vuelosAll = res
+      },
+      error: err => {
+        console.error(err)
+      }
+    })
+
   }
 
   openVuelosModal(){

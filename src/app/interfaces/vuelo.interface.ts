@@ -1,5 +1,7 @@
+import { Aeropuerto } from "./aeropuerto.interface"
+import { Avion } from "./avion.interface"
 
-export type VueloType = {
+export interface VueloType {
     aeropuertoOrigen:string,
     aeropuestoDestino:string,
     cantidadAsientos:number,
@@ -13,4 +15,11 @@ export interface Vuelo {
     id_avion:number,
     id_oferta:number | null,
     aeropuertoOrigen:number,
+    aeropuertoDestino:number,
+    fechaYHoraArribo: Date,
+    fechaYHoraPartida: Date,
+    precio: number,
+    avion: Avion,
+    aeropuerto_origen: Aeropuerto,
+    aeropuerto_destino: Aeropuerto
 }
