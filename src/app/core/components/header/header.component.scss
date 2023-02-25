@@ -24,3 +24,22 @@
     height: 10%;
     background: white;
   }
+
+  a{
+    text-decoration: none;
+    color: #5b0099;
+    font-size:medium;
+  }
+
+  .mouseHover:hover{
+    /*background-color: #5b0099;
+    color: #fff;
+    border-radius: 0.25rem;*/
+    cursor: pointer;
+    padding: 0.10rem;
+    font-size:medium;
+  }
+
+  .soloHover:hover{
+    cursor: pointer;
+  }
