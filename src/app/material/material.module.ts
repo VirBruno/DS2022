@@ -11,6 +11,9 @@ import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-car
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
+import {MatLegacySelectModule as  MatSelectModule} from '@angular/material/legacy-select';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatMenuModule
   ],
   exports:[
     CommonModule,
@@ -41,7 +47,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }

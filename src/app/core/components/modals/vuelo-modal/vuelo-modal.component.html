@@ -7,38 +7,71 @@
             <div class="col-6  mt-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Aeropuerto origen</mat-label>
-                    <input type="text" matInput formControlName="aeropuertoOrigen">
+                    <mat-select formControlName="aeropuertoOrigen">
+                        <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
+                            {{aeropuerto.nombre}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-6 mt-3">
                 <mat-form-field appearance="fill" class="field">
-                    <mat-label>Aeropuerto destino</mat-label>
-                    <input type="text" matInput formControlName="aeropuertoDestino">
+                    <mat-label>Aeropuerto origen</mat-label>
+                    <mat-select formControlName="aeropuertoDestino">
+                        <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
+                            {{aeropuerto.nombre}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-6 mt-3">
+            <div class="col-3 mt-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Fecha de partida</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="fechaPartida">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="salida" formControlName="fechaPartida">
+                    <mat-datepicker-toggle matIconSuffix [for]="salida"></mat-datepicker-toggle>
+                    <mat-datepicker #salida></mat-datepicker>
                   </mat-form-field>
+            </div>
+            <div class="col-3">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Hora de partida</mat-label>
+                    <input type="text" matInput formControlName="horaPartida">
+                </mat-form-field>
+            </div>
+            <div class="col-3 mt-3">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Fecha de arribo</mat-label>
+                    <input matInput [matDatepicker]="arribo" formControlName="fechaArribo">
+                    <mat-datepicker-toggle matIconSuffix [for]="arribo"></mat-datepicker-toggle>
+                    <mat-datepicker #arribo></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div class="col-3">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Hora de arribo</mat-label>
+                    <input type="text" matInput formControlName="horaArribo">
+                </mat-form-field>
             </div>
             <div class="col-6 mt-3">
                 <mat-form-field appearance="fill" class="field">
-                    <mat-label>Cantidad de asientos</mat-label>
-                    <input type="text" matInput formControlName="cantidadAsientos">
+                    <mat-label>Avion</mat-label>
+                    <input type="text" matInput formControlName="avion">
                 </mat-form-field>
             </div>
             <div class="col-6 mt-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Precio</mat-label>
-                    <input type="text" matInput formControlName="precioAsiento">
+                    <input type="number" matInput formControlName="precioAsiento">
                 </mat-form-field>
+            </div>
+            <div class="col-6 mt-3 d-flex justify-content-center">
+                <button mat-stroked-button color="primary" class="button" (click)="cancel()" mat-dialog-close
+                >Cancelar</button>
             </div>
             <div class="col-6 mt-3 d-flex justify-content-center align-items-baseline">
                 <button mat-raised-button color="primary" class="button" (click)="crearVuelo()">Crear</button>
             </div>
+            
     </div>
 </form>
 </div>
