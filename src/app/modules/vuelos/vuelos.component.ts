@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class VuelosComponent implements OnInit{
 
-
+  vuelos= [1,2,3,4,5,6,7]
   constructor(
     private modalService:ModalService,
   ){
