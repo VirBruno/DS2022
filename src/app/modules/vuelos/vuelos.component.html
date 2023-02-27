@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center">
+    <div class="d-flex justify-content-center busqueda-container">
         <app-busqueda></app-busqueda>
     </div>
     <div class="row mt-4 d-flex justify-content-center">
@@ -8,7 +8,7 @@
             <h4>Resultado</h4>
             <button mat-fab color="primary" (click)="openVuelosModal()"><mat-icon>add</mat-icon></button>
         </div>
-        <app-listado class="px-5 mt-3"></app-listado>
+        <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosAll" [vuelo]="vuelo"></app-listado>
     </div>
     
 </div>

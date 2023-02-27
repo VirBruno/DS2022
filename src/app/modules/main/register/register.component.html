@@ -4,6 +4,8 @@
             <mat-icon>arrow_back</mat-icon>
         </button>
     </div>
+
+    <form  [formGroup]="registerForm">
     <div class="container justify-content-center">
         <div class="text-center mt-5">
             <h1>Registro de usuario</h1>
@@ -11,72 +13,126 @@
         <div class="row d-flex">
             <div class="col-6 mt-4">
                 <label>Datos</label>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>Nombre </mat-label>
-                    <input matInput placeholder="Ingrese aqui su nombre">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su nombre"
+                    formControlName="nombre"
+                    >
                 </mat-form-field>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>Apellido </mat-label>
-                    <input matInput placeholder="Ingrese aqui su apellido">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su apellido"
+                    formControlName="apellido"
+                    >
                 </mat-form-field>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>Fecha de Nacimiento </mat-label>
-                    <input matInput placeholder="Ingrese aqui su fecha de nacimiento">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su fecha de nacimiento"
+                    formControlName="fechaNacimiento"
+                    >
                 </mat-form-field>
                 <div class="row">
-                    <div class="col-4 ">
-                        <mat-form-field class="mt-4 field">
+                    <div class="col-4">
+                        <mat-form-field class="datapicker-field" appearance="fill">
                             <mat-label>Tipo de documento</mat-label>
-                            <input matInput type="text" placeholder="Seleccione tipo">
+                            <input 
+                            matInput 
+                            [matDatepicker]="picker" 
+                            placeholder="Seleccione tipo"
+                            formControlName="tipoDocumento"
+                            >
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                     </div>
                     <div class="col-8">
-                        <mat-form-field class="mt-4 field">
+                        <mat-form-field class="mt-4 field" appearance="fill">
                             <mat-label>Número de documento</mat-label>
-                            <input matInput type="text" placeholder="Ingrese aqui su número de dni">
+                            <input 
+                            matInput 
+                            type="text" 
+                            placeholder="Ingrese aqui su número de dni"
+                            formControlName="numeroDocumento"
+                            maxlength="8"
+                            onlyNumbers
+                            >
                         </mat-form-field>
                     </div>
                 </div>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>Teléfono </mat-label>
-                    <input matInput placeholder="Ingrese aqui su número de teléfono">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su número de teléfono"
+                    formControlName="telefono"
+                    >
                 </mat-form-field>
             </div>
             <div class="col-6 mt-4">
                 <label for="">Domicilio</label>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>País </mat-label>
-                    <input matInput placeholder="Ingrese aqui su pais">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su pais"
+                    formControlName="pais"
+                    >
                 </mat-form-field>
-                <mat-form-field class="mt-4 field">
+                <mat-form-field class="mt-4 field" appearance="fill">
                     <mat-label>Región/Provincia/Estado </mat-label>
-                    <input matInput placeholder="Ingrese aqui su región">
+                    <input 
+                    matInput 
+                    placeholder="Ingrese aqui su región"
+                    formControlName="region"
+                    >
                 </mat-form-field>
                 <div class="row">
                     <div class="col-7">
-                        <mat-form-field class="mt-4 field">
+                        <mat-form-field class="mt-4 field" appearance="fill">
                             <mat-label>Calle </mat-label>
-                            <input matInput placeholder="Ingrese aqui calle">
+                            <input 
+                            matInput 
+                            placeholder="Ingrese aqui calle"
+                            formControlName="domicilio"
+                            >
                         </mat-form-field>
                     </div>
                     <div class="col-5">
-                        <mat-form-field class="mt-4 field">
+                        <mat-form-field class="mt-4 field" appearance="fill">
                             <mat-label>Altura </mat-label>
-                            <input matInput placeholder="XXX">
+                            <input 
+                            matInput 
+                            placeholder="XXX"
+                            formControlName="numeroDomicilio"
+                            >
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-7">
-                        <mat-form-field class="mt-4 field">
+                        <mat-form-field class="mt-4 field" appearance="fill">
                             <mat-label>Ciudad </mat-label>
-                            <input matInput placeholder="Ingrese aqui calle">
+                            <input 
+                            matInput 
+                            placeholder="Ingrese aqui calle"
+                            formControlName="ciudad"
+                            >
                         </mat-form-field>
                     </div>
                     <div class="col-5">
-                        <mat-form-field class="mt-4 field">
+                        <mat-form-field class="mt-4 field" appearance="fill">
                             <mat-label>Código postal </mat-label>
-                            <input matInput placeholder="XXX">
+                            <input 
+                            matInput 
+                            placeholder="XXX"
+                            formControlName="codPostal"
+                            >
                         </mat-form-field>
                     </div>
                 </div>
@@ -92,4 +148,7 @@
         Registrar
     </button>
 </div>
+</form>
+
+<!-- <pre>{{registerForm.value | json}}</pre> -->
 </ng-container>
