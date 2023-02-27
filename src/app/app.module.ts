@@ -11,6 +11,8 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { VueloModalComponent } from './core/components/modals/vuelo-modal/vuelo-modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OnlyNumbersDirective } from './core/directives/only-numbers.directive';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -29,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

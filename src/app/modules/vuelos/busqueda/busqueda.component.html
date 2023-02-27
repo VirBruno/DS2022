@@ -1,45 +1,43 @@
 <form action="" [formGroup]="formBusqueda">
-<div class="row d-flex justify-content-center px-5">
-    <mat-card class="d-flex">
-        <div class="col-10 d-flex justify-content-around">
-            <mat-form-field appearance="fill" class="field">
-                <mat-label>Aeropuerto origen</mat-label>
-                <mat-select formControlName="aeropuertoOrigen">
-                    <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
-                        {{aeropuerto.nombre}}
-                    </mat-option>
-                </mat-select>
+<mat-card class="d-flex">
+    <div class="col-10 d-flex justify-content-around">
+        <mat-form-field appearance="fill" class="field">
+            <mat-label>Aeropuerto origen</mat-label>
+            <mat-select formControlName="aeropuertoOrigen">
+                <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
+                    {{aeropuerto.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field">
+            <mat-label>Aeropuerto origen</mat-label>
+            <mat-select formControlName="aeropuertoDestino">
+                <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
+                    {{aeropuerto.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="" appearance="fill" class="field">
+            <mat-label>Cantidad pasajeros</mat-label>
+            <input type="number" matInput formControlName="cantidadPasajeros">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field">
+            <mat-label>Ingrese el periodo de viaje</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate formControlName="fechaSalida" placeholder="Fecha salida">
+                <input matEndDate formControlName="fechaVuelta" placeholder="Fecha vuelta">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="formBusqueda.controls.fechaSalida.hasError('matStartDateInvalid')">Fecha salida inválida</mat-error>
+            <mat-error *ngIf="formBusqueda.controls.fechaVuelta.hasError('matEndDateInvalid')">Fecha vuelta inválida</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill" class="field">
-                <mat-label>Aeropuerto origen</mat-label>
-                <mat-select formControlName="aeropuertoDestino">
-                    <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
-                        {{aeropuerto.nombre}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="" appearance="fill" class="field">
-                <mat-label>Cantidad pasajeros</mat-label>
-                <input type="number" matInput formControlName="cantidadPasajeros">
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="field">
-                <mat-label>Ingrese el periodo de viaje</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate formControlName="fechaSalida" placeholder="Fecha salida">
-                  <input matEndDate formControlName="fechaVuelta" placeholder="Fecha vuelta">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-                <mat-error *ngIf="formBusqueda.controls.fechaSalida.hasError('matStartDateInvalid')">Fecha salida inválida</mat-error>
-                <mat-error *ngIf="formBusqueda.controls.fechaVuelta.hasError('matEndDateInvalid')">Fecha vuelta inválida</mat-error>
-              </mat-form-field>
-              <!--<p>Selected range: {{range.value | json}}</p> -->
-        </div>
-        <div class="col-2 d-flex justify-content-center">
-            <button mat-fab color="primary" (click)="searchVuelos()">
-            <mat-icon>search</mat-icon>
-            </button>
-        </div> 
-    </mat-card>
-</div>
+            <!--<p>Selected range: {{range.value | json}}</p> -->
+    </div>
+    <div class="col-2 d-flex justify-content-center">
+        <button mat-fab color="primary" (click)="searchVuelos()">
+        <mat-icon>search</mat-icon>
+        </button>
+    </div> 
+</mat-card>
 </form>

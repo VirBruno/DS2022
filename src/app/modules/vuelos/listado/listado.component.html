@@ -4,45 +4,28 @@
         <div class="col-4 d-flex justify-content-center align-items-center">
             <div class="d-flex aeros justify-content-around align-items-center">
                 <div class="d-flex flex-column vuelo">
-                    <span class="aeropuerto">EZE</span>
-                    <span class="ciudad mt-2">Buenos aires</span>
+                    <span class="aeropuerto">{{vuelo.aeropuerto_origen.codigo}}</span>
+                    <span class="ciudad mt-2">{{vuelo.aeropuerto_origen.nombre}}</span>
                 </div>
                 <div>
                     <mat-icon class="flight-icon">flight_takeoff</mat-icon>
                 </div>
                 <div class="d-flex flex-column vuelo align-items-end">
-                    <span class="aeropuerto">CUN</span>
-                    <span class="ciudad mt-2">Cancún</span>
+                    <span class="aeropuerto">{{vuelo.aeropuerto_destino.codigo}}</span>
+                    <span class="ciudad mt-2">{{vuelo.aeropuerto_destino.nombre}}</span>
                 </div>
             </div>
-            <!-- <div class="d-flex justify-content-around mt-3">
-                <div class="d-flex flex-column vuelo">
-                    <span class="aeropuerto">CUN</span>
-                    <span class="ciudad mt-2">Cancún</span>
-                </div>
-                <div>
-                    <mat-icon class="flight-icon ">flight_land</mat-icon>
-                </div>
-                <div class="d-flex flex-column vuelo align-items-end">
-                    <span class="aeropuerto">EZE</span>
-                    <span class="ciudad mt-2">Buenos aires</span>
-                </div>
-            </div> -->
         </div>
         <div class="col-4 d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column">
-                <span class="fecha">Salida: Dom 6, Nov 16:00hs</span>
-                <span class="fecha mt-2">Lun: Lun 7, Nov 02:00hs</span>
+                <span class="fecha">Salida: {{vuelo.fechaYHoraPartida | date: 'EEE, MMM d, h:mm'}}</span>
+                <span class="fecha mt-2">Llegada: {{vuelo.fechaYHoraArribo | date: 'EEE, MMM d, h:mm'}}</span>
             </div>
-            <!-- <div class="d-flex flex-column mt-4">
-                <span class="fecha">Salida: Dom 6, Nov 16:00hs</span>
-                <span class="fecha mt-2">Lun: Lun 7, Nov 02:00hs</span>
-            </div> -->
         </div>
         <div class="col-2  d-flex justify-content-center align-items-center ">
             <div class="d-flex flex-column">
                 <span class="precio">Precio Total</span>
-                <span class="precio mt-4">$100.000</span>
+                <span class="precio mt-4">${{vuelo.precio}}</span>
             </div>
         </div>
         <div class="col-2 d-flex justify-content-center align-items-center" *ngIf="type === 'back office'" >
