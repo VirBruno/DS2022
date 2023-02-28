@@ -111,7 +111,7 @@ public function getAllOfertas(){
 public function vuelosPorFecha(Request $req){
     if($req->fechaVuelta == null){
         try {
-            $vuelo['ida'] = Vuelo::with('avion','aeropuertoOrigen','vueloConAsientos')
+            $vuelo['ida'] = Vuelo::with('avion','aeropuertoOrigen','vueloConAsientos', 'aeropuertoDestino')
             ->where([
                 ['aeropuertoOrigen',$req->origen],
                 ['aeropuertoDestino',$req->destino],
@@ -127,7 +127,7 @@ public function vuelosPorFecha(Request $req){
         }
     } else {
         try {
-            $vuelo['ida'] = Vuelo::with('avion','aeropuertoOrigen','vueloConAsientos')
+            $vuelo['ida'] = Vuelo::with('avion','aeropuertoOrigen','vueloConAsientos', 'aeropuertoDestino')
             ->where([
                 ['aeropuertoOrigen',$req->origen],
                 ['aeropuertoDestino',$req->destino],
@@ -135,7 +135,7 @@ public function vuelosPorFecha(Request $req){
             ->whereDate('fechaYHoraPartida',$req->fechaPartida)
             ->get();
     
-            $vuelo['vuelta'] = Vuelo::with('avion','aeropuertoDestino','vueloConAsientos')
+            $vuelo['vuelta'] = Vuelo::with('avion','aeropuertoDestino','vueloConAsientos','aeropuertoOrigen')
             ->where([
                 ['aeropuertoOrigen',$req->destino],
                 ['aeropuertoDestino',$req->origen],

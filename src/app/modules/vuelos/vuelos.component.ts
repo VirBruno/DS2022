@@ -12,8 +12,8 @@ import { VuelosService } from 'src/app/services/vuelos.service';
 })
 export class VuelosComponent implements OnInit{
 
-  vuelosAll: Vuelo[] = []
-  vuelosBusqueda: Vuelo[] = []
+  vuelosIda: Vuelo[] = []
+  vuelosVuelta: Vuelo[] = []
   busquedaRealizada: boolean = false
   titles= ['Proximos vuelos!', 'Resultados de la búsqueda']
   title!: string
@@ -28,7 +28,7 @@ export class VuelosComponent implements OnInit{
     this.title = this.titles[0]
     this.vueloSvc.getAllVuelos().subscribe({
       next: (res)=> {
-        this.vuelosAll = res
+        this.vuelosIda = res
       },
       error: err => {
         console.error(err)
@@ -37,14 +37,19 @@ export class VuelosComponent implements OnInit{
 
   }
 
-  realizoBusqueda(value: boolean){
-    this.busquedaRealizada = value
+  realizoBusqueda(value: any){
+    console.log(value)
+    this.busquedaRealizada = value.busquedaRealizada
     if (value) {
       this.title = this.titles[1]
+      this.vuelosIda = value.vuelosEncontrados.ida
+      this.vuelosVuelta = value.vuelosEncontrados.vuelta
     }
   }
 
   openVuelosModal(){
     this.modalService.openVueloModal()
   }
+
+
 }
