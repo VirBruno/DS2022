@@ -30,7 +30,6 @@ class UserController extends Controller
                 'message' => 'Unauthorized',
             ], 401);
         }
-
         $user = Auth::user();
         return response()->json([
                 'status' => 'success',
@@ -40,7 +39,6 @@ class UserController extends Controller
                     'type' => 'bearer',
                 ]
             ]);
-
     }
 
     public function register(Request $request){
