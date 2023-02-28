@@ -13,15 +13,19 @@ import { VuelosService } from 'src/app/services/vuelos.service';
 export class VuelosComponent implements OnInit{
 
   vuelosAll: Vuelo[] = []
+  vuelosBusqueda: Vuelo[] = []
+  busquedaRealizada: boolean = false
+  titles= ['Proximos vuelos!', 'Resultados de la búsqueda']
+  title!: string
 
   constructor(
     private modalService:ModalService,
     private vueloSvc: VuelosService
   ){
-
   }
 
   ngOnInit(): void {
+    this.title = this.titles[0]
     this.vueloSvc.getAllVuelos().subscribe({
       next: (res)=> {
         this.vuelosAll = res
@@ -31,6 +35,13 @@ export class VuelosComponent implements OnInit{
       }
     })
 
+  }
+
+  realizoBusqueda(value: boolean){
+    this.busquedaRealizada = value
+    if (value) {
+      this.title = this.titles[1]
+    }
   }
 
   openVuelosModal(){

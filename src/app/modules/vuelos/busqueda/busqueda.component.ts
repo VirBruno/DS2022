@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Aeropuerto } from 'src/app/interfaces/aeropuerto.interface';
@@ -24,6 +24,8 @@ export class BusquedaComponent implements OnInit{
     cantidadPasajeros: new FormControl<any>(null, [Validators.required])
   });
 
+  @Output() realizarBusqueda = new EventEmitter<boolean>();
+
   constructor(
     private aeropuertosSvc: AeropuertoService,
     private vuelosSvc: VuelosService
@@ -48,6 +50,7 @@ export class BusquedaComponent implements OnInit{
     }
     this.vuelosSvc.searchVuelos(busqueda)
     console.log(busqueda)
+    this.realizarBusqueda.emit(true)
   }
 
   get busqueda(){
@@ -66,3 +69,7 @@ export class BusquedaComponent implements OnInit{
     return this.formBusqueda.get('aeropuertoDestino')
   }
 }
+function Ouput() {
+  throw new Error('Function not implemented.');
+}
+

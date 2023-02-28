@@ -8,7 +8,7 @@
                     <span class="ciudad mt-2">{{vuelo.aeropuerto_origen.nombre}}</span>
                 </div>
                 <div>
-                    <mat-icon class="flight-icon">flight_takeoff</mat-icon>
+                    <mat-icon class="flight-icon">{{flightType === 'ida' ? 'flight_takeoff' : 'flight_land'}}</mat-icon>
                 </div>
                 <div class="d-flex flex-column vuelo align-items-end">
                     <span class="aeropuerto">{{vuelo.aeropuerto_destino.codigo}}</span>

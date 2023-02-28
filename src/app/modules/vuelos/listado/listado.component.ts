@@ -10,12 +10,12 @@ export class ListadoComponent implements OnInit {
 
   @Input() vuelo! :Vuelo
   type :string = 'back office';
+  @Input()flightType!: string
 
   constructor(){
 
   }
 
   ngOnInit(): void {
-    console.log(this.vuelo)
   }
 }
