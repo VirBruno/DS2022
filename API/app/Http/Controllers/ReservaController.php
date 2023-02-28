@@ -10,14 +10,11 @@ use App\Models\Pago;
 use App\Models\Reserva;
 use App\Models\Vuelo;
 use DB;
+use Validator;
 class ReservaController extends Controller
 {
     public function agregarServicio(Request $req){
-
-       
-
         $servicio = new Servicio();
-
         $servicio->id_reserva = $req->id_reserva;
         $servicio->id_agencia = $req->id_agencia;
         $servicio->id_vuelo = $req->id_vuelo;
@@ -51,17 +48,9 @@ class ReservaController extends Controller
     }
 
     public function listarReservas($id_usuario){
-
-        $validator = Validator::make($req->all(), [
-            'id_usuario' => 'required',
-        ]);
-
-        if($validator->fails()){
-                return response()->json($validator->errors()->toJson(),400);
-        }
-
             try {
-                $misReservas = User::with('misReservas')->where('id_usuario',$id_usuario)->first();
+                $misReservas = Reserva::with('user','vueloVuelta','vueloIda')->where('id_usuario',$id_usuario)->get();
+                
             } catch (\Throwable $th) {
                 return response()->json([
                     "message" => "Error al consultar las reservas",
@@ -69,8 +58,7 @@ class ReservaController extends Controller
                 ],503);
             }
 
-            return response()->json($misReservas);
-
+        return response()->json($misReservas);
     }
 
     public function modificarEstadoReserva(){
@@ -151,7 +139,6 @@ class ReservaController extends Controller
     public function nuevaReserva(Request $req){
 
         $validator = Validator::make($req->all(), [
-            'id_pago' => 'required',
             'estado' => 'required',
             'id_usuario' => 'required',
             'id_vuelo' => 'required',
@@ -161,28 +148,15 @@ class ReservaController extends Controller
                 return response()->json($validator->errors()->toJson(),400);
         }
 
-        try {
-            $vuelo=Vuelo::where('id_vuelo',$req->id_vuelo)->first();
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => "Error al tomar el vuelo",
-                'error' => $th->getMessage()
-            ]);
-        }
-
         $reserva = new Reserva();
 
-        $reserva->id_pago = $req->id_pago;
         $reserva->estado = $req->estado;
         $reserva->id_usuario = $req->id_usuario;
         $reserva->id_vuelo = $req->id_vuelo;
-        DB::beginTransaction();
+     
         try {
-            $reserva->save();
-            DB::commit();
-        
+            $reserva->save();     
         } catch (\Throwable $th) {
-            DB::rollBack();
             return response()->json(
                 [
                     "message" => "Error al crear la reserva",
