@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use App\Models\Direccion;
+use DB;
 class UserController extends Controller
 {
 
@@ -29,7 +30,6 @@ class UserController extends Controller
                 'message' => 'Unauthorized',
             ], 401);
         }
-
         $user = Auth::user();
         return response()->json([
                 'status' => 'success',
@@ -39,10 +39,10 @@ class UserController extends Controller
                     'type' => 'bearer',
                 ]
             ]);
-
     }
 
     public function register(Request $request){
+        DB::beginTransaction();
         $user = new User();
 
         $user->nombre=$request->nombre;
@@ -54,13 +54,23 @@ class UserController extends Controller
         $user->telefono=$request->telefono;
         $user->fechaNacimiento=$request->fechaNacimiento;
         $user->tipoDocumento=$request->tipoDocumento;
+        
+        $direccion = new Direccion();
+        $direccion->altura=$req->altura;
+        $direccion->calle=$req->calle;
+        $direccion->id_ciudad = $req->id_ciudad;
+
         $user->id_direccion=$request->id_direccion;
        
         try {
+            $direccion->save();
+            $user->id_direccion=$direccion->id_direccion;
             $user->save();
+            DB::commit();
         } catch (\Throwable $th) {
+            DB::rollback();
             return response()->json([
-                'error' => $th->getMessage,
+                'error' => $th->getMessage(),
                 'message' => 'Error al crear el usuario'
             ]);
         }

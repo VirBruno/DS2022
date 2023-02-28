@@ -8,7 +8,7 @@
                     <span class="ciudad mt-2">{{vuelo.aeropuerto_origen.nombre}}</span>
                 </div>
                 <div>
-                    <mat-icon class="flight-icon">flight_takeoff</mat-icon>
+                    <mat-icon class="flight-icon">{{flightType === 'ida' ? 'flight_takeoff' : 'flight_land'}}</mat-icon>
                 </div>
                 <div class="d-flex flex-column vuelo align-items-end">
                     <span class="aeropuerto">{{vuelo.aeropuerto_destino.codigo}}</span>
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 d-flex justify-content-center align-items-center">
+        <div class="col-3 d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column">
                 <span class="fecha">Salida: {{vuelo.fechaYHoraPartida | date: 'EEE, MMM d, h:mm'}}</span>
                 <span class="fecha mt-2">Llegada: {{vuelo.fechaYHoraArribo | date: 'EEE, MMM d, h:mm'}}</span>
@@ -28,17 +28,18 @@
                 <span class="precio mt-4">${{vuelo.precio}}</span>
             </div>
         </div>
-        <div class="col-2 d-flex justify-content-center align-items-center" *ngIf="type === 'back office'" >
-            <button mat-raised-button color="accent" class="compraButton" >Comprar</button>
+        <div class="col-3 d-flex justify-content-center align-items-center" >
+            <button mat-raised-button color="accent" class="compraButton" *ngIf="type === 'FRONTOFFICE'" >{{momento == 'busqueda' ? 'Agregar' : 'Comprar'}}</button>
+            <div class="d-flex justify-content-around align-items-center" *ngIf="type === 'BACKOFFICE'">
+                <button mat-fab color="accent">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
         </div>
-        <div class="col-2 d-flex justify-content-around align-items-center" *ngIf="type === 'front office'">
-            <button mat-fab color="accent">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-fab color="warn">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </div>
+        
     </div>
 </mat-card>
 
