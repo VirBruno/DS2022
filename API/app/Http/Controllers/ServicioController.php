@@ -115,7 +115,6 @@ public function vuelosPorFecha(Request $req){
             ->where([
                 ['aeropuertoOrigen',$req->origen],
                 ['aeropuertoDestino',$req->destino],
-                ['id_avion',$req->id_avion]
             ])
             ->whereDate('fechaYHoraPartida',$req->fechaPartida)
             ->get();
@@ -132,7 +131,6 @@ public function vuelosPorFecha(Request $req){
             ->where([
                 ['aeropuertoOrigen',$req->origen],
                 ['aeropuertoDestino',$req->destino],
-                ['id_avion',$req->id_avion]
             ])
             ->whereDate('fechaYHoraPartida',$req->fechaPartida)
             ->get();
@@ -141,7 +139,7 @@ public function vuelosPorFecha(Request $req){
             ->where([
                 ['aeropuertoOrigen',$req->destino],
                 ['aeropuertoDestino',$req->origen],
-                ['id_avion',$req->id_avion]
+               
             ])
             ->whereDate('fechaYHoraPartida',$req->fechaVuelta)
             ->get();

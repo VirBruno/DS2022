@@ -9,6 +9,10 @@
 /API/bootstrap
 /API/storage
 
+/API/vendor
+/API/bootstrap
+/API/storage
+
 # Node
 /node_modules
 npm-debug.log
