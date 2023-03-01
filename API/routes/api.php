@@ -19,9 +19,6 @@ use App\Http\Controllers\AvionController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 
 Route::post('register',[UserController::class, 'register']);
@@ -94,10 +91,4 @@ Route::controller(UserController::class)->group(function () {
  Route::post('logout', [UserController::class, 'logout']);
 
 
- Route::middleware(['jwt.verify'])->group(function () {
 
-    Route::middleware(['rol.verify'])->group(function () {
-
-    });
-
-});
