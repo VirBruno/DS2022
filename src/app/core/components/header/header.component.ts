@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShopCart } from 'src/app/interfaces/shopcart.interface';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private shopCartSvc: ShopCartService,
     private authSvc: AuthServiceService,
-    private modalSvc: ModalService
+    private modalSvc: ModalService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +67,18 @@ export class HeaderComponent implements OnInit {
   }
 
   openPagoModal(){
-    this.modalSvc.openPagoModal()
+    let dialogRef= this.modalSvc.openPagoModal()
+
+    dialogRef.afterClosed()
+    .subscribe(res => {
+      if (res) {
+        this._snackBar.open('Reserva pagada', '', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000
+        })
+      }
+    })
   }
 
   onOpenSidenav(){
