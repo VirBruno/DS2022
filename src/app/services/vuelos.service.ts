@@ -29,4 +29,8 @@ export class VuelosService {
   addVuelo(payload: any): Observable<any>{
     return this.httpClient.post<any>(this.apiUrl + '/vuelo/new', payload)
   }
+
+  deleteVuelo(id_vuelo: number): Observable<any>{
+    return this.httpClient.delete(this.apiUrl + `/vuelo/delete/${id_vuelo}`)
+  }
 }

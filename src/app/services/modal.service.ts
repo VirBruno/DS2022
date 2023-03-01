@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VueloModalComponent } from '../core/components/modals/vuelo-modal/vuelo-modal.component';
 import { PagoComponent } from '../core/components/modals/pago/pago.component';
+import { ConfirmationComponent } from '../core/components/modals/confirmation/confirmation.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,10 @@ export class ModalService {
   openPagoModal(){
     const modalRef= this.dialog.open(PagoComponent);
     return modalRef;
+  }
+
+  openConfirmationModal(){
+    const modalRef = this.dialog.open(ConfirmationComponent)
+    return modalRef
   }
 }

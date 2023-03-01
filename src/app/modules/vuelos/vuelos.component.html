@@ -11,7 +11,7 @@
         </div>
         <div class="col-6" [ngClass]="{'col-6': busquedaRealizada , 'col-12' : !busquedaRealizada}">
             <h4 *ngIf="busquedaRealizada">Vuelos ida</h4>
-            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosIda ; let i = index" 
+            <app-listado (getAll)="getAllVuelos()" class="px-5 mt-3" *ngFor="let vuelo of vuelosIda ; let i = index" 
             [vuelo]="vuelo" 
             [flightType]="'ida'" 
             [momento]="busquedaRealizada ? 'busqueda': 'home'"
@@ -20,7 +20,7 @@
         </div>
         <div class="col-6" *ngIf="busquedaRealizada">
             <h4 *ngIf="busquedaRealizada">Vuelos vuelta</h4>
-            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosVuelta ; let i = index" 
+            <app-listado (getAll)="getAllVuelos()" class="px-5 mt-3" *ngFor="let vuelo of vuelosVuelta ; let i = index" 
             [vuelo]="vuelo" 
             [flightType]="'vuelta'"
             [momento]="'busqueda'"
