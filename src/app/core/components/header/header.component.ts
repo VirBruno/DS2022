@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit {
         this._snackBar.open('Reserva pagada', '', {
           horizontalPosition: 'center',
           verticalPosition: 'top',
-          duration: 3000
+          duration: 5000
         })
       }
     })
