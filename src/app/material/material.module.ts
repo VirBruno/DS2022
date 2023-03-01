@@ -14,7 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
 import {MatLegacySelectModule as  MatSelectModule} from '@angular/material/legacy-select';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -33,7 +33,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     MatAutocompleteModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   exports:[
     CommonModule,
@@ -50,7 +51,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     MatAutocompleteModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

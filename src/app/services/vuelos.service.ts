@@ -25,4 +25,8 @@ export class VuelosService {
   getAllVuelos():Observable<Vuelo[]>{
     return this.httpClient.get<Vuelo[]>(this.apiUrl + '/vuelo/getAll')
   }
+
+  addVuelo(payload: any): Observable<any>{
+    return this.httpClient.post<any>(this.apiUrl + '/vuelo/new', payload)
+  }
 }

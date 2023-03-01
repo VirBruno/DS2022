@@ -48,9 +48,9 @@ export class RegisterComponent implements OnInit {
     };  
     this.authService.register(d).subscribe({
         next: (data:any) => {
-          localStorage.setItem('jwt', JSON.stringify({ token: data.token}) );
+          localStorage.setItem('jwt', JSON.stringify({ token: data.authorisation}) );
           this.authService.loginExitoso();
-          localStorage.setItem('rol',JSON.stringify({ rol: data.rol}));
+          localStorage.setItem('rol',JSON.stringify({ rol: data.user}));
         },
       err: (e:any)=> {
         console.log('error', e.message);

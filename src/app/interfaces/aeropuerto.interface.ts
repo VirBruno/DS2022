@@ -4,7 +4,7 @@ export interface Aeropuerto {
     nombre: string,
     latitud: string,
     longitud: string,
-    codigo:string,
+    codigoIata:string,
     created_at: string,
     updated_at:string
 }

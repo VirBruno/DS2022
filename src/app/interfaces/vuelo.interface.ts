@@ -22,4 +22,5 @@ export interface Vuelo {
     avion: Avion,
     aeropuerto_origen: Aeropuerto,
     aeropuerto_destino: Aeropuerto
+    asientos_ocupados: number
 }

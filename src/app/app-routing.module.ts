@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckNotLoginGuard } from './core/guards/check-not-login.guard';
 
 const routes: Routes = [
 
@@ -11,7 +12,8 @@ const routes: Routes = [
   { 
     path: 'vuelos', 
     loadChildren: () => 
-    import('./modules/vuelos/vuelos.module').then(m => m.VuelosModule) 
+    import('./modules/vuelos/vuelos.module').then(m => m.VuelosModule),
+    canActivate: [CheckNotLoginGuard]
   }
 ];
  

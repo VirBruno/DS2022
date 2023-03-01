@@ -35,7 +35,7 @@
             <div class="col-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Hora de partida</mat-label>
-                    <input type="text" matInput formControlName="horaPartida">
+                    <input type="text" matInput formControlName="horaPartida" placeholder="Ej: 14:00">
                 </mat-form-field>
             </div>
             <div class="col-3 mt-3">
@@ -49,13 +49,17 @@
             <div class="col-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Hora de arribo</mat-label>
-                    <input type="text" matInput formControlName="horaArribo">
+                    <input type="text" matInput formControlName="horaArribo" placeholder="Ej: 14:00">
                 </mat-form-field>
             </div>
             <div class="col-6 mt-3">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Avion</mat-label>
-                    <input type="text" matInput formControlName="avion">
+                    <mat-select formControlName="avion">
+                        <mat-option *ngFor="let avion of aviones" [value]="avion">
+                            {{avion.aerolinea}} - {{avion.matricula}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-6 mt-3">
@@ -65,11 +69,21 @@
                 </mat-form-field>
             </div>
             <div class="col-6 mt-3 d-flex justify-content-center">
-                <button mat-stroked-button color="primary" class="button" (click)="cancel()" mat-dialog-close
+                <button 
+                mat-stroked-button 
+                color="primary" 
+                class="button" 
+                [mat-dialog-close]="false"
                 >Cancelar</button>
             </div>
             <div class="col-6 mt-3 d-flex justify-content-center align-items-baseline">
-                <button mat-raised-button color="primary" class="button" (click)="crearVuelo()">Crear</button>
+                <button 
+                mat-raised-button 
+                color="primary" 
+                class="button" 
+                (click)="crearVuelo()"
+                [mat-dialog-close]="true"
+                >Crear</button>
             </div>
             
     </div>
