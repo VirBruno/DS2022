@@ -10,10 +10,24 @@ use App\Models\Pago;
 use App\Models\Reserva;
 use App\Models\Vuelo;
 use DB;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 class ReservaController extends Controller
 {
     public function agregarServicio(Request $req){
+
+        $validator = Validator::make($req->all(), [
+            'id_reserva' => 'required',
+            "id_agencia"=> 'required',
+            "id_vuelo"=> 'required',
+            "precio"=> 'required',
+            "fechaInicio"=>'required',
+            "fechaFin"=>'required'
+        ]);
+
+        if($validator->fails()){
+                return response()->json($validator->errors()->toJson(),400);
+        }
+
         $servicio = new Servicio();
         $servicio->id_reserva = $req->id_reserva;
         $servicio->id_agencia = $req->id_agencia;
@@ -62,15 +76,6 @@ class ReservaController extends Controller
     }
 
     public function modificarEstadoReserva(){
-        $validator = Validator::make($req->all(), [
-            'id_reserva' => 'required',
-            'estado' => 'required',
-        ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
-        }
-
 
         try {
             $reserva = Reserva::where('id_reserva',$req->id_reserva)->firstOrFail();
@@ -98,11 +103,14 @@ class ReservaController extends Controller
     }
 
     public function modificarReserva(Request $req){
+
         $validator = Validator::make($req->all(), [
             'id_reserva' => 'required',
-            'id_pago' => 'required',
-            'estado' => 'required',
-            'id_usuario' => 'required',
+            "id_vuelo_ida"=> 'required',
+            "id_vuelo_vuelta"=> 'required',
+            "precio"=> 'required',
+            "estado"=>'required',
+            "id_usuario"=>'required'
         ]);
 
         if($validator->fails()){
@@ -119,8 +127,11 @@ class ReservaController extends Controller
         }
 
         $reserva->id_pago = $req->id_pago;
+        $reserva->precio = $req->precio;
         $reserva->estado = $req->estado;
         $reserva->id_usuario = $req->id_usuario;
+        $reserva->id_vuelo_ida = $req->id_vuelo_ida;
+        $reserva->id_vuelo_vuelta = $req->id_vuelo_vuelta;
 
         try {
             $reserva->save();
@@ -137,26 +148,53 @@ class ReservaController extends Controller
     }
 
     public function nuevaReserva(Request $req){
-
         $validator = Validator::make($req->all(), [
-            'estado' => 'required',
-            'id_usuario' => 'required',
-            'id_vuelo' => 'required',
+            "id_vuelo_ida"=> 'required',
+            "precio"=> 'required',
+            "estado"=>'required',
+            "id_usuario"=>'required'
         ]);
 
         if($validator->fails()){
                 return response()->json($validator->errors()->toJson(),400);
         }
+        try {
+            $vuelo_ida= Vuelo::where('id_vuelo',$req->id_vuelo_ida)->first();
+            $vuelo_vuelta = Vuelo::where('id_vuelo',$req->id_vuelo_vuelta)->first();
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    "message" => "Error al crear la reserva",
+                    "error" => $th->getMessage()
+                ], 503
+            );
+        }
 
+        DB::beginTransaction();
         $reserva = new Reserva();
 
+        $reserva->id_pago = $req->id_pago;
+        $reserva->precio = $req->precio;
         $reserva->estado = $req->estado;
         $reserva->id_usuario = $req->id_usuario;
-        $reserva->id_vuelo = $req->id_vuelo;
-     
+        $reserva->id_vuelo_ida = $req->id_vuelo_ida;
+        $reserva->id_vuelo_vuelta = $req->id_vuelo_vuelta;
+
+        $vuelo_ida->asientos_ocupados = $vuelo_ida->asientos_ocupados + $req->asientos_ocupados;
+
+        if($vuelo_vuelta != null){
+            $vuelo_vuelta->asientos_ocupados = $vuelo_vuelta->asientos_ocupados + $req->asientos_ocupados;
+        }
+
         try {
-            $reserva->save();     
+            $reserva->save(); 
+            $vuelo_ida->save();
+            if($vuelo_vuelta != null){
+                $vuelo_vuelta->save();
+            }
+            DB::commit();      
         } catch (\Throwable $th) {
+            DB::rollback();
             return response()->json(
                 [
                     "message" => "Error al crear la reserva",
@@ -169,14 +207,6 @@ class ReservaController extends Controller
     }
 
     public function nuevoPago(Request $req){
-        $validator = Validator::make($req->all(), [
-            'monto' => 'required',
-        ]);
-
-        if($validator->fails()){
-                return response()->json($validator->errors()->toJson(),400);
-        }
-
         $pago=new Pago();
 
         $pago->monto=$req->monto;
