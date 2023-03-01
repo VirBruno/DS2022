@@ -7,6 +7,7 @@
         <div class="px-5 d-flex justify-content-between">
             <h4>{{title}}</h4>
             <button mat-fab color="primary" (click)="openVuelosModal()" *ngIf="userRol === 'BACKOFFICE'"><mat-icon>add</mat-icon></button>
+            <!-- <button mat-fab color="primary" (click)="openPagoModal()"><mat-icon>shop</mat-icon></button> -->
         </div>
         <div class="col-6" [ngClass]="{'col-6': busquedaRealizada , 'col-12' : !busquedaRealizada}">
             <h4 *ngIf="busquedaRealizada">Vuelos ida</h4>

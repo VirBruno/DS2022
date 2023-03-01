@@ -9,13 +9,14 @@ import { Vuelo } from '../interfaces/vuelo.interface';
 export class ShopCartService {
 
   private enableItemId = new BehaviorSubject<number>(0)
-  shoppingCart: BehaviorSubject<any> 
-  shopCart$: Observable<ShopCart> 
-  shopCart: ShopCart  = {
+  private shoppingCart: BehaviorSubject<any>
+  private shopCart$: Observable<ShopCart>
+  private shopCart: ShopCart = {
     precioTotal : 0,
-    vuelos: []
+    vuelo_ida: null,
+    vuelo_vuelta: null 
   }
-  constructor() { 
+  constructor() {
     this.shoppingCart = new BehaviorSubject(this.shopCart)
     this.shopCart$ = this.shoppingCart.asObservable()
   }
@@ -24,10 +25,27 @@ export class ShopCartService {
     return this.enableItemId.asObservable()
   }
 
-  addItem(item: Vuelo){
-    this.shopCart.vuelos.push(item)
-    this.shopCart!.precioTotal += item.precio
-    this.shoppingCart.next(this.shopCart)
+  addItem(item: Vuelo, flightType: string){
+
+    if (flightType == 'ida') {
+      if (this.shopCart.vuelo_ida) {
+        return false
+      }
+      this.shopCart.vuelo_ida = item
+      this.shopCart.precioTotal += item.precio
+      this.shoppingCart.next(this.shopCart)
+      return true
+    }else if(flightType == 'vuelta'){
+      if (this.shopCart.vuelo_vuelta) {
+        return false
+      }
+      this.shopCart.vuelo_vuelta = item
+      this.shopCart.precioTotal += item.precio
+      this.shoppingCart.next(this.shopCart)
+      return true
+    }
+    
+    return false
   }
 
   enableItem(id: number){

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShopCart } from 'src/app/interfaces/shopcart.interface';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { ModalService } from 'src/app/services/modal.service';
 import { ShopCartService } from 'src/app/services/shop-cart.service';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 
@@ -11,7 +13,6 @@ import { SidenavComponent } from '../sidenav/sidenav.component';
 })
 export class HeaderComponent implements OnInit {
   openSidenav!:boolean
-  events:string[]=[]
   openedSidenav=false;
   isLogged= false;
   userRol!: string;
@@ -21,7 +22,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private shopCartSvc: ShopCartService,
-    private authSvc: AuthServiceService
+    private authSvc: AuthServiceService,
+    private modalSvc: ModalService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -51,12 +54,31 @@ export class HeaderComponent implements OnInit {
     this.authSvc.logout()
   }
 
-  deleteItem(index: number){
-    const itemId = this.shoppingCart.vuelos[index].id_vuelo
-    console.log('id vuelo eliminado',itemId)
-    this.shopCartSvc.enableItem(itemId)
-    this.shoppingCart.precioTotal -= this.shoppingCart.vuelos[index].precio
-    this.shoppingCart.vuelos.splice(index, 1)
+  deleteItem(index: number, type:string){
+    if (type === 'ida') {
+      this.shoppingCart.precioTotal -= this.shoppingCart.vuelo_ida?.precio!;
+      this.shoppingCart.vuelo_ida = null;
+    }else {
+      this.shoppingCart.precioTotal -= this.shoppingCart.vuelo_vuelta?.precio!;
+      this.shoppingCart.vuelo_vuelta = null
+    }
+   
+    this.shopCartSvc.enableItem(index)
+  }
+
+  openPagoModal(){
+    let dialogRef= this.modalSvc.openPagoModal()
+
+    dialogRef.afterClosed()
+    .subscribe(res => {
+      if (res) {
+        this._snackBar.open('Reserva pagada', '', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000
+        })
+      }
+    })
   }
 
   onOpenSidenav(){

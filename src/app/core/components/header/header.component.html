@@ -24,10 +24,24 @@
           <ng-container>
             <div class="shopCart">
               <p class="title" >Vuelos agregados</p>
-              <div class="d-flex my-3 justify-content-between align-items-baseline" *ngFor="let item of shoppingCart.vuelos; let i=index" style="border-bottom: 1px dashed black;">
-                <div>{{item.aeropuerto_origen.codigoIata}}->{{item.aeropuerto_destino.codigoIata}}</div>
-                <div >${{item.precio}} 
-                  <button mat-icon-button (click)="deleteItem(i)">
+              <div class="d-flex my-3 justify-content-between align-items-baseline" 
+              *ngIf="shoppingCart.vuelo_ida" 
+              style="border-bottom: 1px dashed black;">
+
+                <div>{{shoppingCart.vuelo_ida.aeropuerto_origen.codigoIata}}->{{shoppingCart.vuelo_ida.aeropuerto_destino.codigoIata}}</div>
+                <div >${{shoppingCart.vuelo_ida.precio}} 
+                  <button mat-icon-button (click)="deleteItem(shoppingCart.vuelo_ida.id_vuelo, 'ida')">
+                    <mat-icon>close</mat-icon>
+                  </button>
+              </div>
+              </div>
+              <div class="d-flex my-3 justify-content-between align-items-baseline" 
+              *ngIf="shoppingCart.vuelo_vuelta" 
+              style="border-bottom: 1px dashed black;">
+              
+                <div>{{shoppingCart.vuelo_vuelta.aeropuerto_origen.codigoIata}}->{{shoppingCart.vuelo_vuelta.aeropuerto_destino.codigoIata}}</div>
+                <div >${{shoppingCart.vuelo_vuelta.precio}} 
+                  <button mat-icon-button (click)="deleteItem(shoppingCart.vuelo_vuelta.id_vuelo, 'vuelta')">
                     <mat-icon>close</mat-icon>
                   </button>
               </div>
@@ -37,7 +51,12 @@
                 <div>${{shoppingCart.precioTotal}}</div>
               </div>
               <div class="d-flex justify-content-end pe-2">
-                <button mat-raised-button color="accent">Reservar</button>
+                <button 
+                mat-raised-button 
+                color="accent"
+                (click)="openPagoModal()"
+                [disabled]="shoppingCart.precioTotal<= 0"
+                >Reservar</button>
               </div>
             </div>
           </ng-container>

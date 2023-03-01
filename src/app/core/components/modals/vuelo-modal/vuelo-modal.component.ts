@@ -67,7 +67,8 @@ export class VueloModalComponent implements OnInit{
           console.log(res)
           this._snackBar.open(res.message, 'Cerrar',{
             horizontalPosition: 'center',
-            verticalPosition: 'bottom'
+            verticalPosition: 'bottom',
+            duration: 3000
           })
         }
       },

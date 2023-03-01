@@ -43,6 +43,11 @@ export class AuthServiceService {
     return this.role.asObservable();
   }
 
+   getUser(){
+    const user = JSON.parse(localStorage.getItem('rol')!)
+    return user
+  }
+
   private getRol(){
     const user = JSON.parse(localStorage.getItem('rol')!) 
     this.role.next(user.user.rol)

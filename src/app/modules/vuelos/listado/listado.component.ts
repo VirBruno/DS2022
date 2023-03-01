@@ -3,6 +3,7 @@ import { ShopCart } from 'src/app/interfaces/shopcart.interface';
 import { Vuelo } from 'src/app/interfaces/vuelo.interface';
 import { ShopCartService } from 'src/app/services/shop-cart.service';
 import { Tipo } from 'src/app/interfaces/user.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -19,7 +20,8 @@ export class ListadoComponent implements OnInit {
   disabled:boolean = false;
 
   constructor(
-    private shopCartSvc: ShopCartService
+    private shopCartSvc: ShopCartService,
+    private _snackBar: MatSnackBar
   ){
     
   }
@@ -29,8 +31,16 @@ export class ListadoComponent implements OnInit {
   }
 
   addShopCart(){
-    this.shopCartSvc.addItem(this.vuelo)
-    this.disabled= true
+    const addItem =this.shopCartSvc.addItem(this.vuelo, this.flightType)
+    if (addItem) {
+      this.disabled= true
+    }else{
+      this._snackBar.open('Ya existe un vuelo de ida, eliminelo para agregar otro', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 5000
+      })
+    }
   }
 
   subscribeToEnableItem(){
