@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DS_Travel_Final" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec1379ce-608a-4c31-946f-6dc1be1897e7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Adapter"/>
+	<subDataset name="SinCorteControl" uuid="f3333ee5-ff6a-4f4f-a187-4d9151a824c0">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Adapter"/>
+		<queryString language="SQL">
+			<![CDATA[select * from mydb.reserva r inner join mydb.vuelo v 
+on r.id_vuelo_ida=v.id_vuelo 
+inner join mydb.usuario u
+on r.id_usuario=u.id_usuario]]>
+		</queryString>
+		<field name="id_reserva" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_reserva"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_reserva"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="id_pago" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_pago"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_pago"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="estado" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="estado"/>
+			<property name="com.jaspersoft.studio.field.label" value="estado"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="id_usuario" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_usuario"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_usuario"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="created_at" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="updated_at" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="id_vuelo_ida" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_vuelo_ida"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_vuelo_ida"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="id_vuelo_vuelta" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_vuelo_vuelta"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_vuelo_vuelta"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+		</field>
+		<field name="id_vuelo" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_vuelo"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_vuelo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="id_avion" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_avion"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_avion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="id_oferta" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_oferta"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_oferta"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="aeropuertoOrigen" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="aeropuertoOrigen"/>
+			<property name="com.jaspersoft.studio.field.label" value="aeropuertoOrigen"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="aeropuertoDestino" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="aeropuertoDestino"/>
+			<property name="com.jaspersoft.studio.field.label" value="aeropuertoDestino"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="fechaYHoraArribo" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="fechaYHoraArribo"/>
+			<property name="com.jaspersoft.studio.field.label" value="fechaYHoraArribo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="fechaYHoraPartida" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="fechaYHoraPartida"/>
+			<property name="com.jaspersoft.studio.field.label" value="fechaYHoraPartida"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="precio" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="precio"/>
+			<property name="com.jaspersoft.studio.field.label" value="precio"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="COLUMN_17" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="COLUMN_18" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="asientos_ocupados" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="asientos_ocupados"/>
+			<property name="com.jaspersoft.studio.field.label" value="asientos_ocupados"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+		</field>
+		<field name="COLUMN_20" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_usuario"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_usuario"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="id_agencia" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_agencia"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_agencia"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="apellido" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="correo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="correo"/>
+			<property name="com.jaspersoft.studio.field.label" value="correo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="rol" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="rol"/>
+			<property name="com.jaspersoft.studio.field.label" value="rol"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="password" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="password"/>
+			<property name="com.jaspersoft.studio.field.label" value="password"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="dni" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="dni"/>
+			<property name="com.jaspersoft.studio.field.label" value="dni"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="telefono" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+			<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="fechaNacimiento" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="fechaNacimiento"/>
+			<property name="com.jaspersoft.studio.field.label" value="fechaNacimiento"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="tipoDocumento" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="tipoDocumento"/>
+			<property name="com.jaspersoft.studio.field.label" value="tipoDocumento"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="id_direccion" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="id_direccion"/>
+			<property name="com.jaspersoft.studio.field.label" value="id_direccion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="COLUMN_32" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<field name="COLUMN_33" class="java.time.LocalDateTime">
+			<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+		</field>
+		<group name="id_reserva">
+			<groupExpression><![CDATA[$F{id_reserva}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="Hasta" class="java.sql.Timestamp">
+		<parameterDescription><![CDATA[FechaHasta]]></parameterDescription>
+	</parameter>
+	<parameter name="Desde" class="java.sql.Timestamp">
+		<parameterDescription><![CDATA[FechaDesde]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM mydb.reserva r
+	inner join mydb.vuelo v ON 
+	 r.id_vuelo_ida = v.id_vuelo 
+	inner join mydb.usuario u ON 
+	 r.id_usuario = u.id_usuario 
+	 
+where r.created_at >=  $P{Desde}  and r.created_at <= $P{Hasta}]]>
+	</queryString>
+	<field name="id_reserva" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_reserva"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_reserva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="id_pago" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_pago"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_pago"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estado"/>
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="id_usuario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="created_at" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="updated_at" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="id_vuelo_ida" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_vuelo_ida"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_vuelo_ida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="id_vuelo_vuelta" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_vuelo_vuelta"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_vuelo_vuelta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="id_vuelo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_vuelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_vuelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="id_avion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_avion"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_avion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="id_oferta" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_oferta"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_oferta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="aeropuertoOrigen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="aeropuertoOrigen"/>
+		<property name="com.jaspersoft.studio.field.label" value="aeropuertoOrigen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="aeropuertoDestino" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="aeropuertoDestino"/>
+		<property name="com.jaspersoft.studio.field.label" value="aeropuertoDestino"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="fechaYHoraArribo" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="fechaYHoraArribo"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaYHoraArribo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="fechaYHoraPartida" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="fechaYHoraPartida"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaYHoraPartida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="precio" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="COLUMN_17" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="COLUMN_18" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="asientos_ocupados" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="asientos_ocupados"/>
+		<property name="com.jaspersoft.studio.field.label" value="asientos_ocupados"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vuelo"/>
+	</field>
+	<field name="COLUMN_20" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="id_agencia" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_agencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_agencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="correo"/>
+		<property name="com.jaspersoft.studio.field.label" value="correo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="rol" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rol"/>
+		<property name="com.jaspersoft.studio.field.label" value="rol"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="password" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="password"/>
+		<property name="com.jaspersoft.studio.field.label" value="password"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="dni" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="telefono" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="fechaNacimiento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechaNacimiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaNacimiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="tipoDocumento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipoDocumento"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipoDocumento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="id_direccion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_direccion"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="COLUMN_32" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="COLUMN_33" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<sortField name="created_at"/>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<group name="id_reserva">
+		<groupExpression><![CDATA[$F{id_reserva}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="11" width="470" height="38" uuid="0d370c0b-3492-4807-b488-ae5a295b5e2b"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte de reservas por fecha de creación"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="2" width="139" height="50" uuid="d8ce94ab-494f-49b4-9fcc-5723a600328d"/>
+				<imageExpression><![CDATA["C:/Users/vir/Desktop/DS Travel.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="0" width="109" height="18" uuid="99beb6c3-ffdd-4b5b-8d10-a659089ec538"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="100" height="18" uuid="f40339e8-ab03-4944-ae30-386809fba5a6"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Página "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="127" y="4" width="100" height="30" uuid="0732e5f8-95cd-41f9-b2a3-69499301b9b3"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha Desde: "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="4" width="100" height="30" uuid="bb1ce2b9-0396-4af0-82bc-cc2e5d05ad2e"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha Hasta: "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="437" y="4" width="100" height="30" uuid="2354658f-c29b-452f-8c79-287850524fb3"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Hasta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="4" width="100" height="30" uuid="f9ab97ff-b592-4a89-99a9-64f25871ebca"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Desde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="129" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="6974c960-9fa1-4de4-aaab-170256611bc9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="71577c68-28ba-4756-881b-02608911a2af"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Creación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="229" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="5ea5e720-808c-4f2d-899c-eff57ea96fea">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc434904-a06e-40bd-b9f1-b80ae989c183"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="429" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="8ac75d33-4423-44a1-b634-c6a159a1b275">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="918fe01d-1089-40c0-9e9a-21128cf2cc3b"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="529" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="37d3fe1d-d5cd-40fe-9221-cf335f18ed2c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0481535-d29e-43da-b303-7fa06e867250"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="329" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="17ec47be-81c2-4035-9a82-6efe35d83ab5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9b9bcb4-c1e3-497c-b126-8c1430463704"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="629" y="50" width="100" height="30" forecolor="#FFFFFF" backcolor="#5B0099" uuid="660a4bd6-5f51-4895-ad33-8cb1e1067ea3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5c1ef947-884d-4899-b20f-4c48c265e975"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="629" y="0" width="100" height="30" uuid="e28b3625-1b20-489c-ad7c-38571d61bf85">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5c1ef947-884d-4899-b20f-4c48c265e975"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="100" height="30" uuid="b9c7947f-de8a-4ad5-b321-98437a141d75">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="71577c68-28ba-4756-881b-02608911a2af"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="0" width="100" height="30" uuid="8d8d072a-1b8d-45af-98aa-5276ae10f4a1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6183b014-6b33-46bb-9cf1-c153dbf2d740"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{id_reserva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="100" height="30" uuid="3d68d762-f2c4-4c4a-80d1-22256c37bd98">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9b9bcb4-c1e3-497c-b126-8c1430463704"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{fechaYHoraPartida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="0" width="100" height="30" uuid="49f5961e-a4a7-4646-ae46-fe0ecd55680e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="918fe01d-1089-40c0-9e9a-21128cf2cc3b"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{aeropuertoOrigen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="529" y="0" width="100" height="30" uuid="f9144858-594b-4f9d-be80-733ce6dcfda7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0481535-d29e-43da-b303-7fa06e867250"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#5B0099"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#5B0099"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{aeropuertoDestino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="37">
+			<textField>
+				<reportElement x="759" y="3" width="40" height="30" uuid="6bc6c587-863b-4562-bbc7-cab20720a223"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="620" y="3" width="139" height="30" uuid="0b4342a0-6cea-4a0d-ad3d-886c3e5a6805"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total de Reservas: "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

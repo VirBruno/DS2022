@@ -7,6 +7,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { ListadoComponent } from './listado/listado.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReservaComponent } from './reserva/reserva.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VuelosComponent,
     BusquedaComponent,
     ListadoComponent,
+    ReservaComponent,
     
   ],
   imports: [

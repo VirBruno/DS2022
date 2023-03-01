@@ -226,6 +226,33 @@ CREATE TABLE `reserva` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `servicio`
+--
+
+DROP TABLE IF EXISTS `servicio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `servicio` (
+  `id_servicio` int NOT NULL AUTO_INCREMENT,
+  `id_reserva` int NOT NULL,
+  `id_agencia` int NOT NULL,
+  `id_vuelo` int NOT NULL,
+  `precio` float NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_servicio`),
+  KEY `fk_servicio_reserva1_idx` (`id_reserva`),
+  KEY `fk_servicio_agencia1_idx` (`id_agencia`),
+  KEY `fk_servicio_vuelo1_idx` (`id_vuelo`),
+  CONSTRAINT `fk_servicio_agencia1` FOREIGN KEY (`id_agencia`) REFERENCES `agencia` (`id_agencia`),
+  CONSTRAINT `fk_servicio_reserva1` FOREIGN KEY (`id_reserva`) REFERENCES `reserva` (`id_reserva`),
+  CONSTRAINT `fk_servicio_vuelo1` FOREIGN KEY (`id_vuelo`) REFERENCES `vuelo` (`id_vuelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -292,4 +319,4 @@ CREATE TABLE `vuelo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-01  0:26:30
+-- Dump completed on 2023-02-28 23:29:14
