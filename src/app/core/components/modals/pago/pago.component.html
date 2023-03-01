@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center">
+    <form [formGroup]="formPagos">
+    <div class="row d-flex justify-content-center p-5">
+        <div class="d-flex justify-content-center">
+            <h1>Generar Pago</h1>
+        </div>  
+            <div class="col-6  mt-3">
+            <div class="d-flex justify-content-betweeen"> 
+                <div>Total a pagar</div>
+                <div>{{ totalReservas }}</div>
+            </div>
+            <div class="col-6 mt-3">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Seleccione método de pago</mat-label>
+                    <mat-select formControlName="metodoPago"></mat-select>
+                        <mat-option *ngFor="let metodoDePago of metodosPago" [value]="metodoDePago">
+                            {{metodoDePago.descripcion}}
+                        </mat-option>
+                </mat-form-field>
+            </div>
+            <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==1">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Ingrese los últimos 4 números de la tarjeta</mat-label>
+                    <input type="text" matInput formControlName="ultimosNumerosTarjeta">
+                </mat-form-field>
+            </div>
+            <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==2">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Ingrese los números de su código de barras</mat-label>
+                    <input type="text" matInput formControlName="codigoBarras">
+                </mat-form-field>
+            </div>
+            <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==3">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>Ingrese número de CVU</mat-label>
+                    <input type="text" matInput formControlName="cvu">
+                </mat-form-field>
+            </div>
+            <div class="col-6 mt-3 d-flex justify-content-center">
+                <button mat-stroked-button color="primary" class="button" (click)="cancel()" mat-dialog-close
+                >Cancelar</button>
+            </div>
+            <div class="col-6 mt-3 d-flex justify-content-center align-items-baseline">
+                <button mat-raised-button color="primary" class="button" (click)="pagar()">Confirmar Pago</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
