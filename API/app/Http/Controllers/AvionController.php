@@ -13,7 +13,8 @@ class AvionController extends Controller
 
         $avion->aerolinea=$req->aerolinea;
         $avion->matricula=$req->matricula;
-
+        $avion->cantAsientos = $req->cantAsientos;
+        
         try {
             $avion->save();
         } catch (\Throwable $th) {
