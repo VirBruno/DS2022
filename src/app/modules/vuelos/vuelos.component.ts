@@ -51,5 +51,7 @@ export class VuelosComponent implements OnInit{
     this.modalService.openVueloModal()
   }
 
-
+  openPagoModal(){
+    this.modalService.openPagoModal()
+  }
 }
