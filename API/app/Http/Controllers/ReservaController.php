@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 class ReservaController extends Controller
 {
     public function agregarServicio(Request $req){
-        
+
         $validator = Validator::make($req->all(), [
             'id_reserva' => 'required',
             "id_agencia"=> 'required',
@@ -150,7 +150,6 @@ class ReservaController extends Controller
     public function nuevaReserva(Request $req){
         $validator = Validator::make($req->all(), [
             "id_vuelo_ida"=> 'required',
-            "id_vuelo_vuelta"=> 'required',
             "precio"=> 'required',
             "estado"=>'required',
             "id_usuario"=>'required'
@@ -159,7 +158,19 @@ class ReservaController extends Controller
         if($validator->fails()){
                 return response()->json($validator->errors()->toJson(),400);
         }
+        try {
+            $vuelo_ida= Vuelo::where('id_vuelo',$req->id_vuelo_ida)->first();
+            $vuelo_vuelta = Vuelo::where('id_vuelo',$req->id_vuelo_vuelta)->first();
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    "message" => "Error al crear la reserva",
+                    "error" => $th->getMessage()
+                ], 503
+            );
+        }
 
+        DB::beginTransaction();
         $reserva = new Reserva();
 
         $reserva->id_pago = $req->id_pago;
@@ -169,9 +180,21 @@ class ReservaController extends Controller
         $reserva->id_vuelo_ida = $req->id_vuelo_ida;
         $reserva->id_vuelo_vuelta = $req->id_vuelo_vuelta;
 
+        $vuelo_ida->asientos_ocupados = $vuelo_ida->asientos_ocupados + $req->asientos_ocupados;
+
+        if($vuelo_vuelta != null){
+            $vuelo_vuelta->asientos_ocupados = $vuelo_vuelta->asientos_ocupados + $req->asientos_ocupados;
+        }
+
         try {
-            $reserva->save();       
+            $reserva->save(); 
+            $vuelo_ida->save();
+            if($vuelo_vuelta != null){
+                $vuelo_vuelta->save();
+            }
+            DB::commit();      
         } catch (\Throwable $th) {
+            DB::rollback();
             return response()->json(
                 [
                     "message" => "Error al crear la reserva",
