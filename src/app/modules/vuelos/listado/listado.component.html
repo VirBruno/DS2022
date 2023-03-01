@@ -29,7 +29,14 @@
             </div>
         </div>
         <div class="col-3 d-flex justify-content-center align-items-center" >
-            <button mat-raised-button color="accent" class="compraButton" *ngIf="type === 'FRONTOFFICE'" >{{momento == 'busqueda' ? 'Agregar' : 'Comprar'}}</button>
+            <button 
+            mat-raised-button 
+            color="accent" 
+            class="compraButton" 
+            *ngIf="type === 'FRONTOFFICE'"
+            (click)="addShopCart()"
+            [disabled]="disabled"
+            >{{momento == 'busqueda' ? 'Agregar' : 'Comprar'}}</button>
             <div class="d-flex justify-content-around align-items-center" *ngIf="type === 'BACKOFFICE'">
                 <button mat-fab color="accent">
                     <mat-icon>edit</mat-icon>
