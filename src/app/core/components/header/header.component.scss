@@ -43,3 +43,27 @@
   .soloHover:hover{
     cursor: pointer;
   }
+
+  .menu .cdk-overlay-pane{
+    background-color: white;
+  }
+
+  .shopCart {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 250px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+  
+  ::ng-deep.mat-mdc-menu-content{
+    padding: 0 !important;
+  }

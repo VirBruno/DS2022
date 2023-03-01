@@ -6,24 +6,24 @@
     <div class="row mt-4 d-flex justify-content-center">
         <div class="px-5 d-flex justify-content-between">
             <h4>{{title}}</h4>
-            <button mat-fab color="primary" (click)="openVuelosModal()"><mat-icon>add</mat-icon></button>
+            <button mat-fab color="primary" (click)="openVuelosModal()" *ngIf="userRol === 'BACKOFFICE'"><mat-icon>add</mat-icon></button>
         </div>
         <div class="col-6" [ngClass]="{'col-6': busquedaRealizada , 'col-12' : !busquedaRealizada}">
             <h4 *ngIf="busquedaRealizada">Vuelos ida</h4>
-            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosIda" 
+            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosIda ; let i = index" 
             [vuelo]="vuelo" 
             [flightType]="'ida'" 
             [momento]="busquedaRealizada ? 'busqueda': 'home'"
-            [type]="'FRONTOFFICE'"
+            [type]="userRol"
             ></app-listado>
         </div>
         <div class="col-6" *ngIf="busquedaRealizada">
             <h4 *ngIf="busquedaRealizada">Vuelos vuelta</h4>
-            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosVuelta" 
+            <app-listado class="px-5 mt-3" *ngFor="let vuelo of vuelosVuelta ; let i = index" 
             [vuelo]="vuelo" 
             [flightType]="'vuelta'"
             [momento]="'busqueda'"
-            [type]="'FRONTOFFICE'"
+            [type]="userRol"
             ></app-listado>
         </div>
         <!-- <app-listado class="px-5 mt-3" [flightType]="'vuelta'"></app-listado> -->

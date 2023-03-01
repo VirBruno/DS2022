@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { VueloModalComponent } from 'src/app/core/components/modals/vuelo-modal/vuelo-modal.component';
+import { Tipo } from 'src/app/interfaces/user.interface';
 import { Vuelo } from 'src/app/interfaces/vuelo.interface';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { VuelosService } from 'src/app/services/vuelos.service';
 
@@ -15,17 +15,31 @@ export class VuelosComponent implements OnInit{
   vuelosIda: Vuelo[] = []
   vuelosVuelta: Vuelo[] = []
   busquedaRealizada: boolean = false
-  titles= ['Proximos vuelos!', 'Resultados de la búsqueda']
+  titles= ['Proximos vuelos', 'Resultados de la búsqueda']
   title!: string
+  userRol!: Tipo | string;
 
   constructor(
     private modalService:ModalService,
-    private vueloSvc: VuelosService
+    private vueloSvc: VuelosService,
+    private authSvc: AuthServiceService
   ){
   }
 
   ngOnInit(): void {
     this.title = this.titles[0]
+    this.getAllVuelos()
+
+    this.authSvc.rol()
+    .subscribe({
+      next: (res:Tipo | string)=> {
+        this.userRol = res
+        console.log(this.userRol)
+      }
+    })
+  }
+
+  getAllVuelos(){
     this.vueloSvc.getAllVuelos().subscribe({
       next: (res)=> {
         this.vuelosIda = res
@@ -34,7 +48,6 @@ export class VuelosComponent implements OnInit{
         console.error(err)
       }
     })
-
   }
 
   realizoBusqueda(value: any){
@@ -48,7 +61,12 @@ export class VuelosComponent implements OnInit{
   }
 
   openVuelosModal(){
-    this.modalService.openVueloModal()
+    let modal = this.modalService.openVueloModal()
+
+    modal.afterClosed()
+    .subscribe(result =>{
+      console.log(result)
+    })
   }
 
 

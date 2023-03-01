@@ -158,8 +158,8 @@ public function createVuelo(Request $req){
     $vuelo = new Vuelo();
 
     $vuelo->id_avion = $req->id_avion;
-    $vuelo->aeropuertoDestino = $req->id_aeropuertoDestino;
-    $vuelo->aeropuertoOrigen =$req->id_aeropuertoOrigen;
+    $vuelo->aeropuertoDestino = $req->aeropuertoDestino;
+    $vuelo->aeropuertoOrigen =$req->aeropuertoOrigen;
     $vuelo->fechaYHoraArribo = $req->fechaYHoraArribo;
     $vuelo->fechaYHoraPartida = $req->fechaYHoraPartida;
     $vuelo->precio = $req->precio;
@@ -173,7 +173,10 @@ public function createVuelo(Request $req){
         ]);
     }
 
-    return response()->json("Vuelo creado con exito");
+    return response()->json([
+        "message"=> "Vuelo creado con exito",
+        "status"=> true
+    ]);
 }
 
 public function updateVuelo(Request $req){
