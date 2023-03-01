@@ -42,6 +42,22 @@ class UserController extends Controller
     }
 
     public function register(Request $request){
+        try {
+            $users = User::get();
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => $th->getMessage(),
+                'message' => 'Error al crear el usuario'
+            ]);
+        }
+        foreach($users as $user){
+            if($user->correo == $request->correo){
+                return response()->json([
+                    'error' => $th->getMessage(),
+                    'message' => 'Ya existe un usuario con el correo proporcionado'
+                ]);
+            }
+        }
         DB::beginTransaction();
         $user = new User();
 
@@ -56,9 +72,9 @@ class UserController extends Controller
         $user->tipoDocumento=$request->tipoDocumento;
         
         $direccion = new Direccion();
-        $direccion->altura=$req->altura;
-        $direccion->calle=$req->calle;
-        $direccion->id_ciudad = $req->id_ciudad;
+        $direccion->altura=$request->altura;
+        $direccion->calle=$request->calle;
+        $direccion->id_ciudad = $request->id_ciudad;
 
         $user->id_direccion=$request->id_direccion;
        
