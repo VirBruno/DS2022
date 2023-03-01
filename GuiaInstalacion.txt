@@ -1,0 +1,80 @@
+# DS Travel - GR07
+***
+Sistema para búsqueda y venta de Pasajes Aéreos, Paquetes Turísticos,  Alojamiento y Vehículos.
+En este caso, el sistema esta acotado a la gestion de Pasajes Aéreos y todo lo relacionado para que el sistema funcione.
+***
+## Tabla de Contenidos
+1. [Info General ](#info-general)
+2. [Tecnologias](#tecnologias)
+3. [Instalacion](#instalacion)
+4. [Colaboracion](#colaboracion)
+5. [FAQs](#faqs)
+### Info General 
+***
+El sistema permite la optimización del proceso de venta, la sistematización y agilizar estas actividades para la comodidad de los clientes
+al momento de realizar un reserva online. 
+El sistema consta de 2 módulos: administrativo (backoffice) y de usuarios finales (frontoffice).
+l
+### Screenshot
+***
+## Technologies
+***
+[Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+[Bootstrap] versión 5.0.0
+[Laravel] version 10.0.0
+[PHP] (https://www.php.net/downloads) version 8.0.0 
+[Composer] (https://getcomposer.org/download/) version 2.3.7
+[XAMPP] version 3.3.0
+[MySQL - Workbench] version 8.0.
+[NodeJS] version 16.14.2
+[Visual Studio Code] version 1.73.1
+
+## Installation
+***
+Para instalar el proyecto se requiere tener los siguientes ejecutables de la tecnologías mencinadas descargados en la computadora. 
+
+Se debe copiar el link del repositorio de github: https://github.com/VirBruno/DS2022.git
+
+Se deberá instalar MySQL, corriendo los scripts de creación y generación de datos:
+1. DS Travel.sql
+2. DS Travel registros.sql
+
+Instalar PHP, Composer y NodeJS. 
+
+Luego de chequear lo anteriormente dicho, abrir una ventana de comandos (se sugiere terminal de VS Code). 
+
+INSTALAR ANGULAR
+```
+$ git clone https://github.com/VirBruno/DS2022.git
+$ cd ..\DS2022
+$ npm install
+$ npm run start
+```
+
+INSTALAR LARAVEL
+```
+$ composer global require "laravel/installer *Instalar laravel*
+$ create-project laravel/laravel API *Creación de proyecto API*
+```
+
+Para abrir la aplicación web se deberá presionar en el enlace generado (4020)
+## Collaboration
+***
+Give instructions on how to collaborate with your project.
+> Para enviar comentarios / sugerencias, escribir un correo a los siguientes remitentes: 
+alejocorrea30071998@hotmail.com
+goonzagerez@gmail.com
+lucas.olimpi@gmail.com
+virbruno27@gmail.com
+
+## FAQs
+***
+Lista de preguntas frecuentes: 
+1. **PREGUNTA 1**
+¿Es necesario descargar programas?
+Si, se necesitan, de forma obligatoria, tener instaladas las tecnologias mencionadas anteriormente.
+
+2. **PREGUNTA 2**
+¿Donde se ve la página?
+Una vez instalado todas las tecnologías, se debe abrir la página desde el localhost.
+
