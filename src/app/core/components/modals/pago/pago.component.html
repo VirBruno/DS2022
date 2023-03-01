@@ -2,29 +2,111 @@
     <form [formGroup]="formPagos">
     <div class="row d-flex justify-content-center p-5">
         <div class="d-flex justify-content-center">
-            <h1>Generar Pago</h1>
+            <h1>Pago</h1>
         </div>  
-            <div class="col-6  mt-3">
-            <div class="d-flex justify-content-betweeen"> 
-                <div>Total a pagar</div>
-                <div>{{ totalReservas }}</div>
+            <div class="col-12  mt-3">
+            <div class="d-flex justify-content-between"> 
+                <h2 class="title">Total a pagar</h2>
+                <h2 class="price">$ {{ carritoCompras.precioTotal }}</h2>
             </div>
-            <div class="col-6 mt-3">
+             <div class="col-12 mt-3">
                 <mat-form-field appearance="fill" class="field">
-                    <mat-label>Seleccione método de pago</mat-label>
-                    <mat-select formControlName="metodoPago"></mat-select>
+                    <mat-label>Método de pago</mat-label>
+                    <mat-select formControlName="metodoPago">
                         <mat-option *ngFor="let metodoDePago of metodosPago" [value]="metodoDePago">
                             {{metodoDePago.descripcion}}
                         </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==1">
+            <div class="row" *ngIf="metodoPago.value == metodosPago[0]">
+                <div class="col-6">
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Número tarjeta</mat-label>
+                        <input 
+                        type="text" 
+                        matInput 
+                        formControlName="numeroTarjeta" 
+                        placeholder="1111-2222-3333-XXXX"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Nombre propietario</mat-label>
+                        <input 
+                        type="text" 
+                        matInput 
+                        formControlName="nombrePropietario" 
+                        placeholder="Ej: Juan Perez"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Mes vencimiento</mat-label>
+                        <input 
+                        type="text" 
+                        matInput 
+                        formControlName="fechaVencimiento" 
+                        placeholder="Ej: 02/XX"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Codigo de seguridad</mat-label>
+                        <input 
+                        type="text" 
+                        matInput 
+                        maxlength="3"
+                        formControlName="codSeguridad" 
+                        placeholder="111"
+                        onlyNumbers
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Número documento titular</mat-label>
+                        <input 
+                        type="text" 
+                        matInput 
+                        maxlength="8"
+                        formControlName="dni" 
+                        placeholder="11 222 333"
+                        onlyNumbers
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" *ngIf="metodoPago.value == metodosPago[1]">
                 <mat-form-field appearance="fill" class="field">
-                    <mat-label>Ingrese los últimos 4 números de la tarjeta</mat-label>
-                    <input type="text" matInput formControlName="ultimosNumerosTarjeta">
+                    <mat-label>Codigo barras</mat-label>
+                    <input 
+                    type="text" 
+                    matInput
+                    formControlName="codigoBarras" 
+                    placeholder="Valor con escaner"
+                    onlyNumbers
+                    >
                 </mat-form-field>
             </div>
-            <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==2">
+
+            <div class="row" *ngIf="metodoPago.value == metodosPago[2]">
+                <mat-form-field appearance="fill" class="field">
+                    <mat-label>CBU</mat-label>
+                    <input 
+                    type="text" 
+                    matInput
+                    formControlName="cvu" 
+                    maxlength="22"
+                    placeholder="Ej: 5198181711100007799214"
+                    onlyNumbers
+                    >
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-3 mt-3" *ngIf="metodoPago!.value?.tipo==2">
                 <mat-form-field appearance="fill" class="field">
                     <mat-label>Ingrese los números de su código de barras</mat-label>
                     <input type="text" matInput formControlName="codigoBarras">
@@ -35,13 +117,28 @@
                     <mat-label>Ingrese número de CVU</mat-label>
                     <input type="text" matInput formControlName="cvu">
                 </mat-form-field>
-            </div>
-            <div class="col-6 mt-3 d-flex justify-content-center">
-                <button mat-stroked-button color="primary" class="button" (click)="cancel()" mat-dialog-close
-                >Cancelar</button>
-            </div>
-            <div class="col-6 mt-3 d-flex justify-content-center align-items-baseline">
-                <button mat-raised-button color="primary" class="button" (click)="pagar()">Confirmar Pago</button>
+            </div>  -->
+            <div class="col-12 d-flex mt-3 justify-content-between">
+                <div>
+                    <button 
+                    mat-stroked-button 
+                    color="primary" 
+                    type="button" 
+                    class="me-5"
+                    (click)="cancel()" 
+                    mat-dialog-close
+                    >Cancelar
+                    </button>
+                </div>
+                <div>
+                    <button 
+                    mat-raised-button 
+                    color="primary" 
+                    type="button" 
+                    (click)="pagar()"
+                    >Confirmar Pago
+                    </button>
+                </div>
             </div>
         </div>
     </div>

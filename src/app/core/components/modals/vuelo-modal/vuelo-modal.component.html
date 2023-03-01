@@ -16,7 +16,7 @@
             </div>
             <div class="col-6 mt-3">
                 <mat-form-field appearance="fill" class="field">
-                    <mat-label>Aeropuerto origen</mat-label>
+                    <mat-label>Aeropuerto Destino</mat-label>
                     <mat-select formControlName="aeropuertoDestino">
                         <mat-option *ngFor="let aeropuerto of aeropuertos" [value]="aeropuerto.id_aeropuerto">
                             {{aeropuerto.nombre}}
